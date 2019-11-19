@@ -4,26 +4,36 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour {
-    private Rigidbody2D _rb;
     public float acceleration;
     public float maxSpeed;
+    public float rotationSpeed;
+
+    private Rigidbody2D _rb;
 
 	// Use this for initialization
 	void Start () {
         _rb = GetComponent<Rigidbody2D>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         Vector2 currentVel = _rb.velocity;
+        Vector2 currentDir = Vector2.up;
 
         float hMov = Input.GetAxis("Horizontal");
-        if (hMov != 0 && currentVel.magnitude < maxSpeed) _rb.AddForce(Vector2.right * hMov * Time.deltaTime * acceleration);
-
         float vMov = Input.GetAxis("Vertical");
-        if (vMov != 0 && currentVel.magnitude < maxSpeed) _rb.AddForce(Vector2.up * vMov * Time.deltaTime * acceleration);
 
-        float angle = Mathf.Atan2(currentVel.y, currentVel.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+        if (hMov != 0 || vMov != 0) {
+            currentDir = new Vector2(hMov, vMov).normalized;
+
+            if (currentDir.magnitude < maxSpeed) {
+                _rb.AddForce(Vector2.right * hMov * Time.deltaTime * acceleration);
+                _rb.AddForce(Vector2.up * vMov * Time.deltaTime * acceleration);
+            }
+        }
+
+        float angle = Mathf.Atan2(currentDir.y, currentDir.x) * Mathf.Rad2Deg + 90;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
     }
 }
