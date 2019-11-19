@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     public float acceleration;
     public float maxSpeed;
     public float rotationSpeed;
+    public float rotationOffset;
 
     private Rigidbody2D _rb;
 
@@ -32,7 +33,7 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
 
-        float angle = Mathf.Atan2(currentDir.y, currentDir.x) * Mathf.Rad2Deg + 90;
+        float angle = Mathf.Atan2(currentDir.y, currentDir.x) * Mathf.Rad2Deg + rotationOffset;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
     }
