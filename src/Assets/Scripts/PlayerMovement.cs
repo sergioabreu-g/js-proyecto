@@ -11,12 +11,10 @@ public class PlayerMovement : MonoBehaviour {
 
     private Rigidbody2D _rb;
 
-	// Use this for initialization
 	void Start () {
         _rb = GetComponent<Rigidbody2D>();
 	}
 
-    // Update is called once per frame
     void Update() {
         Vector2 currentVel = _rb.velocity;
         Vector2 currentDir = Vector2.up;

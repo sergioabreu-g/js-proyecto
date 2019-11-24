@@ -438,8 +438,9 @@ GameObject:
   - component: {fileID: 1135017775}
   - component: {fileID: 1135017774}
   - component: {fileID: 1135017778}
+  - component: {fileID: 1135017779}
   m_Layer: 0
-  m_Name: Player
+  m_Name: MainPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -573,6 +574,20 @@ MonoBehaviour:
   maxSpeed: 30
   rotationSpeed: 6
   rotationOffset: -90
+--- !u!114 &1135017779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135017773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1499ab73b27cbf942af79a95d3d4175a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 0
+  _spotlight_active: 1
 --- !u!1 &1389852635
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,6 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2e9f055879450b459ed2c9c1ae5f377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1135017779}
 --- !u!1 &1414442071
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,12 +748,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -10
-  m_Sprite: {fileID: 21300000, guid: b106ffb699caf8f488760fce598bb84d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e300b14550e0de4184a152b93be094d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 16.8, y: 10.67}
+  m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -752,7 +768,7 @@ Transform:
   m_GameObject: {fileID: 1414442071}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.06, y: 0.16, z: 0}
-  m_LocalScale: {x: 1.0454488, y: 1.0454488, z: 1.0454488}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -877,7 +893,7 @@ GameObject:
   - component: {fileID: 1638567117}
   - component: {fileID: 1638567118}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: LightCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
