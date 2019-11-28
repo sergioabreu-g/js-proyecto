@@ -26,6 +26,10 @@ public class Player : MonoBehaviour
         _playerMovement = GetComponent<PlayerMovement>();
     }
 
+    public void Update() {
+        updateInsideWater();
+    }
+
     public bool isSpotlightActive() {
         return _spotlight_active;
     }
@@ -38,22 +42,13 @@ public class Player : MonoBehaviour
         return _id;
     }
 
-    public void enterWater()
+    public void updateInsideWater()
     {
-        if (_insideWater && transform.position.y < _waterUpperLimit) return;
+        if (_insideWater == transform.position.y < _waterUpperLimit) return;
 
-        _insideWater = true;
-        _rb.gravityScale = _waterGravityScale;
+        _insideWater = transform.position.y < _waterUpperLimit;
+        _rb.gravityScale = _insideWater? _waterGravityScale : _airGravityScale;
     }
-
-    public void exitWater()
-    {
-        if (!_insideWater && transform.position.y < _waterUpperLimit) return;
-
-        _insideWater = false;
-        _rb.gravityScale = _airGravityScale;
-    }
-
     public bool insideWater()
     {
         return _insideWater;

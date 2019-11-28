@@ -155,14 +155,15 @@ MonoBehaviour:
     right: 10
     bottom: -5
     left: -10
-  quality: 40
+  quality: 50
   waterMaterial: {fileID: 2100000, guid: ae327962c65f22442900df5a2a5058fd, type: 2}
   splash: {fileID: 7135131613015012803, guid: c9b7000d1978add4ab7c13e435be3dfc, type: 3}
   player: {fileID: 1135017779}
   springconstant: 0.02
   damping: 0.1
   spread: 0.1
-  collisionVelocityFactor: 0.03
+  collisionVelocityFactor: 0.01
+  collisionMassFactor: 0.006
 --- !u!114 &256988763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,8 +640,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4759a1b1804414c9de22047a4d771e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 20000
-  maxSpeed: 30
+  acceleration: 30000
+  maxSpeed: 50
   rotationOffset: -90
   waterRotationSpeed: 5
   airRotationSpeed: 1.5
@@ -659,8 +660,8 @@ MonoBehaviour:
   _id: 0
   _spotlight_active: 1
   _waterGravityScale: 0.1
-  _airGravityScale: 0.9
-  _waterUpperLimit: -1.3
+  _airGravityScale: 0.85
+  _waterUpperLimit: 0.4
 --- !u!1 &1389852635
 GameObject:
   m_ObjectHideFlags: 0

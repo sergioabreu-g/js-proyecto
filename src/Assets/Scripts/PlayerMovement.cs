@@ -31,10 +31,9 @@ public class PlayerMovement : MonoBehaviour {
             currentDir = new Vector2(hMov, vMov).normalized;
             if (!_player.insideWater()) currentDir.y = -1;
 
-            if (currentDir.magnitude < maxSpeed) {
+            if (currentDir.magnitude < maxSpeed && _player.insideWater()) {
                 _rb.AddForce(Vector2.right * hMov * Time.deltaTime * acceleration);
-                if (_player.insideWater())
-                    _rb.AddForce(Vector2.up * vMov * Time.deltaTime * acceleration);
+                _rb.AddForce(Vector2.up * vMov * Time.deltaTime * acceleration);
             }
         }
 
