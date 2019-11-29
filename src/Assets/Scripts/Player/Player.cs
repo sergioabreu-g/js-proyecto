@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(TrashCollector))]
+[RequireComponent(typeof(PlayerMovement))]
 public class Player : MonoBehaviour
 {
     public Transform initialPos;
@@ -20,13 +22,14 @@ public class Player : MonoBehaviour
 
     private bool _insideWater = false;
     private Rigidbody2D _rb;
+    private TrashCollector _trashCollector;
     private PlayerMovement _playerMovement;
 
     public void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _trashCollector = GetComponent<TrashCollector>();
         _playerMovement = GetComponent<PlayerMovement>();
-
         die();
     }
 
@@ -49,10 +52,17 @@ public class Player : MonoBehaviour
     public void updateInsideWater()
     {
         if (_insideWater == transform.position.y < _waterUpperLimit) return;
-
         _insideWater = transform.position.y < _waterUpperLimit;
-        _rb.gravityScale = _insideWater? _waterGravityScale : _airGravityScale;
+
+        if (_insideWater) {
+            _rb.gravityScale = _waterGravityScale;
+        } else {
+            _rb.gravityScale = _airGravityScale;
+            _trashCollector.clearTrash();
+        }
+
     }
+
     public bool insideWater()
     {
         return _insideWater;
@@ -64,5 +74,9 @@ public class Player : MonoBehaviour
         _rb.velocity = Vector3.zero;
 
         updateInsideWater();
+    }
+
+    public void updateTrash() {
+        _playerMovement.movementModifier = 1 - _trashCollector.getTrashPercentage();
     }
 }
