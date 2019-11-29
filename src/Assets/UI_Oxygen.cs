@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class UI_Oxygen : MonoBehaviour
 {
     public Oxygen oxygen;
+    public Color initialColor, finalColor;
+    public float initialColorDeadzone, finalColorDeadzone;
     private Text _text;
 
     private void Start() {
@@ -18,5 +20,11 @@ public class UI_Oxygen : MonoBehaviour
     void Update()
     {
         _text.text = ((int)oxygen.getCurrentOxygen()).ToString();
+
+        float fixedColorPercent = oxygen.getCurrentOxygenPercent();
+        fixedColorPercent = (fixedColorPercent - finalColorDeadzone) / (initialColorDeadzone - finalColorDeadzone);
+        fixedColorPercent = Mathf.Clamp(fixedColorPercent, 0, 1);
+
+        _text.color = Color.Lerp(finalColor, initialColor, fixedColorPercent);
     }
 }
