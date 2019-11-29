@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
+    public Transform initialPos;
+
     [SerializeField]
     private uint _id;
     [SerializeField]
@@ -24,6 +26,8 @@ public class Player : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _playerMovement = GetComponent<PlayerMovement>();
+
+        die();
     }
 
     public void Update() {
@@ -52,5 +56,13 @@ public class Player : MonoBehaviour
     public bool insideWater()
     {
         return _insideWater;
+    }
+
+    public void die() {
+        transform.position = initialPos.position;
+        transform.rotation = initialPos.rotation;
+        _rb.velocity = Vector3.zero;
+
+        updateInsideWater();
     }
 }
