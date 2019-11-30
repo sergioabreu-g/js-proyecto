@@ -54,4 +54,8 @@ public class PlayerMovement : MonoBehaviour {
         currentRotationSpeed *= movementModifier;
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * currentRotationSpeed);
     }
+
+    public float getCurrentAcceleration() {
+        return currentAcceleration;
+    }
 }
