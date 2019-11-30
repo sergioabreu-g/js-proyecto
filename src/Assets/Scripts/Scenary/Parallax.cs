@@ -17,8 +17,8 @@ public class Parallax : MonoBehaviour
     void LateUpdate() {
         Vector3 pos = transform.position;
 
-        if (alongX_axis) pos.x = (cam.position.x - _startPos.x) * parallaxCoeficient;
-        if (alongY_axis) pos.y = (cam.position.y - _startPos.y) * parallaxCoeficient;
+        if (alongX_axis) pos.x = _startPos.x + (cam.position.x - _startPos.x) * parallaxCoeficient;
+        if (alongY_axis) pos.y = _startPos.y + (cam.position.y - _startPos.y) * parallaxCoeficient;
 
         transform.position = pos;
     }

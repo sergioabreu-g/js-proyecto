@@ -21,6 +21,8 @@ public class DynamicWater2D : MonoBehaviour {
 	public Material waterMaterial;
 	public GameObject splash;
     public Player player;
+    public string SortingLayerName = "Default";
+    public int OrderInLayer;
     private float playerWaterGravityScale;
 
 	private Vector3[] vertices;
@@ -87,8 +89,10 @@ public class DynamicWater2D : MonoBehaviour {
 		// generate mesh
 		MeshRenderer meshRenderer = gameObject.AddComponent<MeshRenderer> ();
 		if (waterMaterial) meshRenderer.sharedMaterial = waterMaterial;
+        meshRenderer.sortingLayerName = SortingLayerName;
+        meshRenderer.sortingOrder = OrderInLayer;
 
-		MeshFilter meshFilter = gameObject.AddComponent<MeshFilter> ();
+        MeshFilter meshFilter = gameObject.AddComponent<MeshFilter> ();
 
 		mesh = new Mesh ();
 		mesh.vertices = vertices;
