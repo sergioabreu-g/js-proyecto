@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private uint _id;
     [SerializeField]
-    private bool _spotlight_active = true;
+    private bool _spotlight_active = false;
     [SerializeField]
     private float _waterGravityScale = 0.1f;
     [SerializeField]

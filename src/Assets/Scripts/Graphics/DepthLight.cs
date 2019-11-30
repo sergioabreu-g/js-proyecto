@@ -19,7 +19,7 @@ public class DepthLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float currentIntensity = Mathf.Clamp((((Mathf.Abs(player.position.y - lowestY))/(higherY - lowestY)) * maxIntensity), minIntensity, maxIntensity);
+        float currentIntensity = Mathf.Clamp((((player.position.y - lowestY)/(higherY - lowestY)) * maxIntensity), minIntensity, maxIntensity);
         _light.intensity = currentIntensity;
     }
 }
