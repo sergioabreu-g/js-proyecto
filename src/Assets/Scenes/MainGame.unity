@@ -273,8 +273,8 @@ MonoBehaviour:
   springconstant: 0.01
   damping: 0.08
   spread: 0.1
-  collisionVelocityFactor: 0.01
-  collisionMassFactor: 0.005
+  collisionVelocityFactor: 0.02
+  collisionMassFactor: 0.002
 --- !u!4 &256988764
 Transform:
   m_ObjectHideFlags: 0
