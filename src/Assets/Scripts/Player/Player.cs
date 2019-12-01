@@ -19,6 +19,10 @@ public class Player : MonoBehaviour
     private float _airGravityScale = 1f;
     [SerializeField]
     private float _waterUpperLimit = -1.3f;
+    [SerializeField]
+    private float _airDrag = 0;
+    [SerializeField]
+    private float _waterDrag = 2f;
 
     private bool _insideWater = false;
     private Rigidbody2D _rb;
@@ -56,8 +60,11 @@ public class Player : MonoBehaviour
 
         if (_insideWater) {
             _rb.gravityScale = _waterGravityScale;
+            _rb.drag = _waterDrag;
         } else {
             _rb.gravityScale = _airGravityScale;
+            _rb.drag = _airDrag;
+
             _trashCollector.clearTrash();
         }
 

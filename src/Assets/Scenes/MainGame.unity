@@ -5835,6 +5835,8 @@ MonoBehaviour:
   _waterGravityScale: 0.1
   _airGravityScale: 0.85
   _waterUpperLimit: 1.4
+  _airDrag: 0
+  _waterDrag: 2
 --- !u!114 &1135017780
 MonoBehaviour:
   m_ObjectHideFlags: 0
