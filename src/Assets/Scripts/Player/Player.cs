@@ -7,10 +7,12 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovement))]
 public class Player : MonoBehaviour
 {
+    private Progress _progress;
+
     public Transform initialPos;
 
     [SerializeField]
-    private uint _id;
+    private uint _id = 0;
     [SerializeField]
     private bool _spotlight_active = false;
     [SerializeField]
@@ -31,9 +33,12 @@ public class Player : MonoBehaviour
 
     public void Start()
     {
+        _progress = new Progress();
+
         _rb = GetComponent<Rigidbody2D>();
         _trashCollector = GetComponent<TrashCollector>();
         _playerMovement = GetComponent<PlayerMovement>();
+
         die();
     }
 
@@ -85,5 +90,10 @@ public class Player : MonoBehaviour
 
     public void updateTrash() {
         _playerMovement.movementModifier = 1 - _trashCollector.getTrashPercentage();
+    }
+
+    public Progress GetProgress()
+    {
+        return _progress;
     }
 }
