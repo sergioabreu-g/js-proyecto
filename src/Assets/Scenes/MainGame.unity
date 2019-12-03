@@ -120,6 +120,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!108 &164944149 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 7209450967476285920, guid: d4ea045439a7b9449b87930e128915ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 7209450968041110830}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &197361812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,6 +1213,18 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &545333751 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8387014858021265702, guid: 0960fb792df71964cb0acea7a5ebf9fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 8387014857492709585}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &604376616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,7 +1310,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -1626,7 +1644,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -1664,6 +1682,12 @@ MonoBehaviour:
   lowestY: -20
   maxIntensity: 1.5
   minIntensity: 0
+--- !u!108 &1827383341 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 7209450967198649075, guid: d4ea045439a7b9449b87930e128915ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 7209450968041110830}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1861029520 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8387014858992504385, guid: 0960fb792df71964cb0acea7a5ebf9fe,
@@ -1902,6 +1926,96 @@ PrefabInstance:
       propertyPath: initialPos
       value: 
       objectReference: {fileID: 720162122}
+    - target: {fileID: 7209450966906126874, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: playerLights.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450966906126874, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: oxygenNumber
+      value: 
+      objectReference: {fileID: 545333751}
+    - target: {fileID: 7209450966906126874, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: playerLights.Array.data[0]
+      value: 
+      objectReference: {fileID: 1827383341}
+    - target: {fileID: 7209450966906126874, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: playerLights.Array.data[1]
+      value: 
+      objectReference: {fileID: 164944149}
+    - target: {fileID: 7209450966906126874, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: fullOxygenColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450966906126874, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: fullOxygenColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450966906126874, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: fullOxygenColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450966906126874, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: fullOxygenColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450966906126874, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: lowOxygenColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450966906126874, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: lowOxygenColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450966906126874, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: lowOxygenColor.b
+      value: 0.04660988
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450966906126874, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: lowOxygenColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450966906126874, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: initialColorDeadzone
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450966906126874, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: finalColorDeadzone
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450966906126874, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: maxOxygen
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450966906126878, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 7209450967198649075, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: m_BounceIntensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450967476285920, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: m_BounceIntensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7209450968147356626, guid: d4ea045439a7b9449b87930e128915ce,
         type: 3}
       propertyPath: photoUI
@@ -2100,7 +2214,8 @@ PrefabInstance:
       propertyPath: oxygen
       value: 
       objectReference: {fileID: 1135017780}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8387014858021265704, guid: 0960fb792df71964cb0acea7a5ebf9fe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0960fb792df71964cb0acea7a5ebf9fe, type: 3}
 --- !u!1001 &8569272138816189184
 PrefabInstance:

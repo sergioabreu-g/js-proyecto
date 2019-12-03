@@ -11,6 +11,11 @@ public class PlayerSpotlight : MonoBehaviour {
     private float baseAngle;
 
     public Player player;
+    public Oxygen oxygen;
+
+    void Awake()
+    {
+    }
 
     private void Start() {
         _light = GetComponent<Light>();

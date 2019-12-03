@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rb;
     private TrashCollector _trashCollector;
     private PlayerMovement _playerMovement;
+    private Oxygen _oxygen;
     public PlayerSpotlight _playerSpotlight;
 
     public void Awake()
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _trashCollector = GetComponent<TrashCollector>();
         _playerMovement = GetComponent<PlayerMovement>();
+        _oxygen = GetComponent<Oxygen>();
 
         updateAllLevels();
 
@@ -118,5 +120,6 @@ public class Player : MonoBehaviour
         _playerMovement.updateLevel();
         _playerSpotlight.updateLevel();
         _trashCollector.updateLevel();
+        _oxygen.updateLevel();
     }
 }
