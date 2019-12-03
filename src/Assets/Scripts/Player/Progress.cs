@@ -10,7 +10,15 @@ public class Progress
         ATUN,
     }
 
+    public static readonly float[] oxygenTimes = { 10, 15, 25, 40, 70 };
+    public static readonly int[] maxTrash = { 5, 7, 12, 15, 20 };
+    public static readonly float[] speedMultiplier = { 1, 1.1f, 1.2f, 1.4f, 1.7f };
+    public static readonly float[] spotLight = { 1, 1.1f, 1.2f, 1.4f, 1.7f };
+
+    public int oxygenLevel, trashLevel, speedLevel, spotlightLevel;
+
     private Dictionary<Fish, bool> _fishPhotos;
+    private Fish _lastCapture;
 
     public Progress()
     {
@@ -26,7 +34,11 @@ public class Progress
 
     public void photographFish(Fish fish)
     {
-        _fishPhotos[fish] = true;
+        if (!_fishPhotos[fish])
+        {
+            _fishPhotos[fish] = true;
+            _lastCapture = fish;
+        }
     }
 
     public int photosMade()
