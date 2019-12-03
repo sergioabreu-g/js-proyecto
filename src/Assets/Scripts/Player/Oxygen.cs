@@ -32,4 +32,9 @@ public class Oxygen : MonoBehaviour {
     public float getCurrentOxygenPercent() {
         return currentOxygen / maxOxygen;
     }
+
+    public void updateLevel()
+    {
+        maxOxygen = _player.GetProgress().getOxygenTime();
+    }
 }

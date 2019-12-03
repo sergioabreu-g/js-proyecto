@@ -7,15 +7,17 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
     public float rotationOffset;
 
-    public float maxAcceleration;
-    public float maxMaxSpeed;
-    public float waterRotationSpeed;
+    public float initialAcceleration;
+    public float initialMaxSpeed;
+    public float initialWaterRotationSpeed;
     public float airRotationSpeed;
 
     private float currentAcceleration;
     private float currentMaxSpeed;
+    private float rotationSpeed;
     private float currentRotationSpeed;
 
+    [HideInInspector]
     public float movementModifier = 1;
 
     private Rigidbody2D _rb;
@@ -24,10 +26,6 @@ public class PlayerMovement : MonoBehaviour {
 	void Start () {
         _rb = GetComponent<Rigidbody2D>();
         _player = GetComponent<Player>();
-
-        currentAcceleration = maxAcceleration;
-        currentMaxSpeed = maxMaxSpeed;
-        currentRotationSpeed = airRotationSpeed;
     }
 
     void Update() {
@@ -50,9 +48,18 @@ public class PlayerMovement : MonoBehaviour {
         float angle = Mathf.Atan2(currentDir.y, currentDir.x) * Mathf.Rad2Deg + rotationOffset;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        currentRotationSpeed = _player.insideWater() ? waterRotationSpeed : airRotationSpeed;
+        currentRotationSpeed = _player.insideWater() ? rotationSpeed : airRotationSpeed;
         currentRotationSpeed *= movementModifier;
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * currentRotationSpeed);
+    }
+
+    public void updateLevel()
+    {
+        float multiplier = _player.GetProgress().getSpeedMultiplier();
+
+        currentAcceleration = initialAcceleration * multiplier;
+        currentMaxSpeed = initialMaxSpeed * multiplier;
+        rotationSpeed = initialWaterRotationSpeed * multiplier;
     }
 
     public float getCurrentAcceleration() {

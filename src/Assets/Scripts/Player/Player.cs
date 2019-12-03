@@ -30,20 +30,35 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rb;
     private TrashCollector _trashCollector;
     private PlayerMovement _playerMovement;
+    public PlayerSpotlight _playerSpotlight;
+
+    public void Awake()
+    {
+        _progress = new Progress();
+    }
 
     public void Start()
     {
-        _progress = new Progress();
-
         _rb = GetComponent<Rigidbody2D>();
         _trashCollector = GetComponent<TrashCollector>();
         _playerMovement = GetComponent<PlayerMovement>();
+
+        updateAllLevels();
 
         die();
     }
 
     public void Update() {
         updateInsideWater();
+
+        // ********** TESTING *************
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            _progress.upgradeOxygenLevel();
+            _progress.upgradeSpeedLevel();
+            _progress.upgradeSpotlightLevel();
+            _progress.upgradeTrashLevel();
+            updateAllLevels();
+        }
     }
 
     public bool isSpotlightActive() {
@@ -70,6 +85,7 @@ public class Player : MonoBehaviour
             _rb.gravityScale = _airGravityScale;
             _rb.drag = _airDrag;
 
+            _progress.addTrash(_trashCollector.getCurrentTrash());
             _trashCollector.clearTrash();
         }
 
@@ -95,5 +111,12 @@ public class Player : MonoBehaviour
     public Progress GetProgress()
     {
         return _progress;
+    }
+
+    public void updateAllLevels()
+    {
+        _playerMovement.updateLevel();
+        _playerSpotlight.updateLevel();
+        _trashCollector.updateLevel();
     }
 }

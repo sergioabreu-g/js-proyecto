@@ -6,10 +6,18 @@ using UnityEngine;
 public class PlayerSpotlight : MonoBehaviour {
     private Light _light;
 
+    private float baseRange;
+    private float baseIntensity;
+    private float baseAngle;
+
     public Player player;
 
     private void Start() {
         _light = GetComponent<Light>();
+
+        baseAngle = _light.spotAngle;
+        baseIntensity = _light.intensity;
+        baseRange = _light.range;
     }
 
     void Update()
@@ -26,5 +34,14 @@ public class PlayerSpotlight : MonoBehaviour {
         float mouseAngle = -Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg;
 
         transform.rotation = Quaternion.Euler(mouseAngle, 90, 0);
+    }
+
+    public void updateLevel()
+    {
+        float spotlightMultiplier = player.GetProgress().getSpotlightMultiplier();
+
+        _light.spotAngle = baseAngle * spotlightMultiplier;
+        _light.range = baseRange * spotlightMultiplier;
+        _light.intensity = baseIntensity * spotlightMultiplier;
     }
 }

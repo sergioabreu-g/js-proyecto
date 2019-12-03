@@ -43,4 +43,9 @@ public class TrashCollector : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+
+    public void updateLevel()
+    {
+        maxTrash = _player.GetProgress().getMaxTrash();
+    }
 }

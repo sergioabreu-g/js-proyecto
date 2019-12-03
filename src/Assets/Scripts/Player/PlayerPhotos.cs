@@ -37,9 +37,13 @@ public class PlayerPhotos : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Fish fish = collision.gameObject.GetComponent<Fish>();
-        if (fish == null) return;
-        
-        if (!player.GetProgress().getFishPhoto(fish.fishType)) {
+        if (fish != null) photographFish(fish);
+    }
+
+    public void photographFish(Fish fish)
+    {
+        if (!player.GetProgress().getFishPhoto(fish.fishType))
+        {
             player.GetProgress().photographFish(fish.fishType);
             photoUI.SetActive(true);
             _photoUIText.text = fish.fishName;
