@@ -10455,6 +10455,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dcd43351b9a59e4f8cdb81528e39e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1311112899 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7209450967476285922, guid: d4ea045439a7b9449b87930e128915ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 7209450968041110830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1311112900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311112899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca42299b2fa25a4188d8d4dd01b80a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1135017779}
+  progressMultiplier: 0.6
 --- !u!1 &1478160674
 GameObject:
   m_ObjectHideFlags: 0
@@ -10564,17 +10584,17 @@ MonoBehaviour:
   lowestY: -20
   maxIntensity: 1.5
   minIntensity: 0
---- !u!108 &1827383341 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 7209450967198649075, guid: d4ea045439a7b9449b87930e128915ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 7209450968041110830}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1626029346 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8569272138762757468, guid: e0417f0492eb6cd4aab8f8a4aacf4735,
     type: 3}
   m_PrefabInstance: {fileID: 8569272138816189184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &1827383341 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 7209450967198649075, guid: d4ea045439a7b9449b87930e128915ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 7209450968041110830}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1861029520 stripped
 MonoBehaviour:
@@ -10834,6 +10854,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 7209450967476285920, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: m_BounceIntensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450967476285920, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: m_SpotAngle
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450967476285920, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: m_Range
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450967476285920, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450967476285920, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7209450966906126879, guid: d4ea045439a7b9449b87930e128915ce,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10969,26 +11014,26 @@ PrefabInstance:
       propertyPath: maxOxygen
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 7209450966906126878, guid: d4ea045439a7b9449b87930e128915ce,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 7209450967198649075, guid: d4ea045439a7b9449b87930e128915ce,
         type: 3}
       propertyPath: m_BounceIntensity
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7209450967476285920, guid: d4ea045439a7b9449b87930e128915ce,
+    - target: {fileID: 7209450966906126878, guid: d4ea045439a7b9449b87930e128915ce,
         type: 3}
-      propertyPath: m_BounceIntensity
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 7209450968147356626, guid: d4ea045439a7b9449b87930e128915ce,
         type: 3}
       propertyPath: photoUI
       value: 
       objectReference: {fileID: 2010790662}
+    - target: {fileID: 7209450967198649072, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: oxygen
+      value: 
+      objectReference: {fileID: 1135017780}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4ea045439a7b9449b87930e128915ce, type: 3}
 --- !u!1001 &7397089842109160140

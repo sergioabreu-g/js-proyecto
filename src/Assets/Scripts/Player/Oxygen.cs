@@ -67,6 +67,7 @@ public class Oxygen : MonoBehaviour {
     public void updateLevel()
     {
         maxOxygen = _player.GetProgress().getOxygenTime();
+        currentOxygen = maxOxygen;
         updateBaseLightIntensities();
     }
 

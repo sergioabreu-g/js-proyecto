@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _waterDrag = 2f;
 
+    private PlayerLight[] _playerLights;
+
     private bool _insideWater = false;
     private Rigidbody2D _rb;
     private TrashCollector _trashCollector;
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
     public void Awake()
     {
         _progress = new Progress();
+        _playerLights = GetComponentsInChildren<PlayerLight>();
     }
 
     public void Start()
@@ -53,7 +56,7 @@ public class Player : MonoBehaviour
     public void Update() {
         updateInsideWater();
 
-        // ********** TESTING *************
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             _progress.upgradeOxygenLevel();
             _progress.upgradeSpeedLevel();
@@ -61,6 +64,7 @@ public class Player : MonoBehaviour
             _progress.upgradeTrashLevel();
             updateAllLevels();
         }
+#endif
     }
 
     public bool isSpotlightActive() {
@@ -118,7 +122,11 @@ public class Player : MonoBehaviour
     public void updateAllLevels()
     {
         _playerMovement.updateLevel();
-        _playerSpotlight.updateLevel();
+        foreach (PlayerLight pLight in _playerLights)
+        {
+            pLight.updateLevel();
+        }
+
         _trashCollector.updateLevel();
         _oxygen.updateLevel();
     }
