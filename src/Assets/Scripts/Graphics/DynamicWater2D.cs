@@ -139,7 +139,7 @@ public class DynamicWater2D : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D col) {
 		Rigidbody2D rb = col.GetComponent<Rigidbody2D>();
-        if (rb == null) return;
+        if (rb == null || col.transform.position.y < bound.top) return;
 
         Splash(col, (Mathf.Abs(rb.velocity.y) * collisionVelocityFactor) + (rb.mass * collisionMassFactor), false);
     }
