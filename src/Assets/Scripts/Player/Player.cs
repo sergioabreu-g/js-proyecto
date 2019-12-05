@@ -33,7 +33,10 @@ public class Player : MonoBehaviour
     private TrashCollector _trashCollector;
     private PlayerMovement _playerMovement;
     private Oxygen _oxygen;
+    private PlayerPhotos _playerPhotos;
+
     public PlayerSpotlight _playerSpotlight;
+    public FadingUI deadUI;
 
     public void Awake()
     {
@@ -47,10 +50,11 @@ public class Player : MonoBehaviour
         _trashCollector = GetComponent<TrashCollector>();
         _playerMovement = GetComponent<PlayerMovement>();
         _oxygen = GetComponent<Oxygen>();
+        _playerPhotos = GetComponentInChildren<PlayerPhotos>();
 
         updateAllLevels();
 
-        die();
+        resetTransform();
     }
 
     public void Update() {
@@ -103,6 +107,16 @@ public class Player : MonoBehaviour
     }
 
     public void die() {
+        deadUI.gameObject.SetActive(true);
+
+        deactivateBehaviours();
+        float deadTime = deadUI.activeTime - deadUI.fadeTime - 0.1f;
+        Invoke("activateBehaviours", deadTime);
+        Invoke("resetTransform", deadTime);
+    }
+
+    public void resetTransform()
+    {
         transform.position = initialPos.position;
         transform.rotation = initialPos.rotation;
         _rb.velocity = Vector3.zero;
@@ -129,5 +143,23 @@ public class Player : MonoBehaviour
 
         _trashCollector.updateLevel();
         _oxygen.updateLevel();
+    }
+
+    private void deactivateBehaviours()
+    {
+        _oxygen.enabled = false;
+        _playerMovement.enabled = false;
+        _playerPhotos.enabled = false;
+        _rb.gravityScale = 0;
+    }
+
+    public void activateBehaviours()
+    {
+        _oxygen.enabled = true;
+        _playerMovement.enabled = true;
+        _playerPhotos.enabled = true;
+        _rb.gravityScale = _airGravityScale;
+
+        updateInsideWater();
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class FishUI : MonoBehaviour
+public class FadingUI : MonoBehaviour
 {
     public float activeTime = 2;
     public float fadeTime = 0.1f;
@@ -34,5 +34,4 @@ public class FishUI : MonoBehaviour
         }
         else _canvasGroup.alpha = 1;
     }
-
 }

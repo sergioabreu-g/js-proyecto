@@ -189,7 +189,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dcd43351b9a59e4f8cdb81528e39e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOxygen: 60
+  maxOxygen: 10
+  playerLights:
+  - {fileID: 7209450967198649075}
+  - {fileID: 7209450967476285920}
+  fullOxygenColor: {r: 1, g: 1, b: 1, a: 1}
+  lowOxygenColor: {r: 1, g: 0, b: 0.04660988, a: 1}
+  initialColorDeadzone: 0.8
+  finalColorDeadzone: 0.2
+  oxygenNumber: {fileID: 0}
 --- !u!114 &7209450966906126875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +310,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 3.3733046, y: 2.118453}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -322,6 +330,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7209450966906126877}
+  progressMultiplier: 1
+  oxygen: {fileID: 7209450966906126874}
 --- !u!1 &7209450967476285922
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,6 +342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7209450967476285923}
   - component: {fileID: 7209450967476285920}
+  - component: {fileID: 1311112900}
   m_Layer: 0
   m_Name: PlayerLightCircle
   m_TagString: Untagged
@@ -364,10 +375,10 @@ Light:
   serializedVersion: 9
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.87
-  m_Range: 8
-  m_SpotAngle: 70
-  m_InnerSpotAngle: 3
+  m_Intensity: 1
+  m_Range: 5.5
+  m_SpotAngle: 75
+  m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -406,13 +417,27 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1311112900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7209450967476285922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca42299b2fa25a4188d8d4dd01b80a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 7209450966906126877}
+  progressMultiplier: 0.6
 --- !u!1 &7209450968147356630
 GameObject:
   m_ObjectHideFlags: 0
