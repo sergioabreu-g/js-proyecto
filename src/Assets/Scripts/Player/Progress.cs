@@ -8,11 +8,10 @@ public class Progress {
     public enum Fish {
         ATUN,
     }
-
-    public static readonly int[] oxygenTimes = { 10, 15, 25, 40, 70 };
-    public static readonly int[] maxTrash = { 5, 7, 12, 15, 20 };
-    public static readonly float[] speedMultipliers = { 1, 1.25f, 1.45f, 1.65f, 1.8f };
-    public static readonly float[] spotlightMultipliers = { 1, 1.3f, 1.6f, 1.8f, 2f };
+    public static readonly int[] oxygenTimes = { 40, 50, 65, 80, 100 };
+    public static readonly int[] maxTrash = { 0, 5, 8, 12, 16 };
+    public static readonly float[] speedMultipliers = { 0.8f, 0.87f, 0.95f, 1.04f, 1.14f };
+    public static readonly float[] spotlightMultipliers = { 1, 1.15f, 1.3f, 1.5f, 1.7f };
 
     public const int coinsPerTrash = 5;
     public const int coinsPerPhoto = 50;
