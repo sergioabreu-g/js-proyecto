@@ -32844,7 +32844,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 720162121}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -55.4, y: 5.69, z: 0}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -37922,7 +37922,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.74
+  orthographic size: 3.6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -38790,6 +38790,36 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 5eda9e4c961dd6f49bdd01929899bb97, type: 2}
+    - target: {fileID: 7209450967198649075, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450967198649075, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: m_SpotAngle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450967198649075, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: m_Range
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450967476285920, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: m_SpotAngle
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450967476285920, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209450967476285920, guid: d4ea045439a7b9449b87930e128915ce,
+        type: 3}
+      propertyPath: m_Range
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4ea045439a7b9449b87930e128915ce, type: 3}
 --- !u!1001 &7397089842109160140
@@ -38858,6 +38888,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397089842419079001, guid: 2ad78273f476b8641aa8d6de76e19c42,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxGradient.key0.r
+      value: 0.7311321
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397089842419079001, guid: 2ad78273f476b8641aa8d6de76e19c42,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397089842419079001, guid: 2ad78273f476b8641aa8d6de76e19c42,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxGradient.key0.b
+      value: 0.83255506
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397089842419079001, guid: 2ad78273f476b8641aa8d6de76e19c42,
+        type: 3}
+      propertyPath: TrailModule.colorOverTrail.maxGradient.key0.r
+      value: 0.73333335
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397089842419079001, guid: 2ad78273f476b8641aa8d6de76e19c42,
+        type: 3}
+      propertyPath: TrailModule.colorOverTrail.maxGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397089842419079001, guid: 2ad78273f476b8641aa8d6de76e19c42,
+        type: 3}
+      propertyPath: TrailModule.colorOverTrail.maxGradient.key0.b
+      value: 0.8352941
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397089842419079001, guid: 2ad78273f476b8641aa8d6de76e19c42,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 1.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ad78273f476b8641aa8d6de76e19c42, type: 3}
