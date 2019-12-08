@@ -46,6 +46,6 @@ public class TrashCollector : MonoBehaviour
 
     public void updateLevel()
     {
-        maxTrash = _player.GetProgress().getMaxTrash();
+        maxTrash = Player.GetProgress().getMaxTrash();
     }
 }

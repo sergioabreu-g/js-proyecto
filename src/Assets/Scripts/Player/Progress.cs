@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 public class Progress {
     public enum Fish {
         ATUN,
     }
     public static readonly int[] oxygenTimes = { 40, 60, 80, 100, 130 };
-    public static readonly int[] maxTrash = { 0, 5, 8, 12, 16 };
+    public static readonly int[] maxTrash = { 5, 8, 12, 16, 20 };
     public static readonly float[] speedMultipliers = { 0.8f, 0.87f, 0.95f, 1.03f, 1.12f };
     public static readonly float[] spotlightMultipliers = { 1, 1.15f, 1.3f, 1.5f, 1.7f };
 
@@ -71,9 +72,11 @@ public class Progress {
         return _oxygenLevel;
     }
 
-    public void upgradeOxygenLevel()
+    public bool upgradeOxygenLevel()
     {
-        _oxygenLevel = Math.Min(_oxygenLevel + 1, oxygenTimes.Length - 1);
+        if (_oxygenLevel >= oxygenTimes.Length - 1) return false;
+        _oxygenLevel++;
+        return true;
     }
 
     public int getTrashLevel()
@@ -81,9 +84,11 @@ public class Progress {
         return _trashLevel;
     }
 
-    public void upgradeTrashLevel()
+    public bool upgradeTrashLevel()
     {
-        _trashLevel = Math.Min(_trashLevel + 1, maxTrash.Length - 1);
+        if (_trashLevel >= maxTrash.Length - 1) return false;
+        _trashLevel++;
+        return true;
     }
 
     public int getSpeedLevel()
@@ -91,9 +96,11 @@ public class Progress {
         return _speedLevel;
     }
 
-    public void upgradeSpeedLevel()
+    public bool upgradeSpeedLevel()
     {
-        _speedLevel = Math.Min(_speedLevel + 1, speedMultipliers.Length - 1);
+        if (_speedLevel >= speedMultipliers.Length - 1) return false;
+        _speedLevel++;
+        return true;
     }
 
     public int getSpotlightLevel()
@@ -101,9 +108,11 @@ public class Progress {
         return _spotlightLevel;
     }
 
-    public void upgradeSpotlightLevel()
+    public bool upgradeSpotlightLevel()
     {
-        _spotlightLevel = Math.Min(_spotlightLevel + 1, spotlightMultipliers.Length - 1);
+        if (_spotlightLevel >= spotlightMultipliers.Length - 1) return false;
+        _spotlightLevel++;
+        return true;
     }
 
     public int getOxygenTime()
@@ -146,6 +155,37 @@ public class Progress {
 
     public void removeCoins(int coins)
     {
-        _currentCoins -= Math.Max(0, _currentCoins - Math.Abs(coins));
+        _currentCoins = Math.Max(0, _currentCoins - Math.Abs(coins));
+    }
+
+    public int getMaxOxygenLevel() {
+        return oxygenTimes.Length;
+    }
+
+    public int getMaxSpeedLevel() {
+        return speedMultipliers.Length;
+    }
+
+    public int getMaxTrashLevel() {
+        return maxTrash.Length;
+    }
+    public int getMaxSpotlightLevel() {
+        return spotlightMultipliers.Length;
+    }
+
+    public bool isOxygenMaxed() {
+        return _oxygenLevel == oxygenTimes.Length - 1;
+    }
+
+    public bool isSpeedMaxed() {
+        return _speedLevel == speedMultipliers.Length - 1;
+    }
+
+    public bool isTrashMaxed() {
+        return _trashLevel == maxTrash.Length - 1;
+    }
+
+    public bool isSpotlightMaxed() {
+        return _spotlightLevel == spotlightMultipliers.Length - 1;
     }
 }

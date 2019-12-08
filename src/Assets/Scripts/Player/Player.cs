@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovement))]
 public class Player : MonoBehaviour
 {
-    private Progress _progress;
+    private static Progress _progress;
 
     public Transform initialPos;
 
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 
     public void Awake()
     {
-        _progress = new Progress();
+        _progress = GetProgress();
         _playerLights = GetComponentsInChildren<PlayerLight>();
     }
 
@@ -128,8 +128,9 @@ public class Player : MonoBehaviour
         _playerMovement.movementModifier = 1 - _trashCollector.getTrashPercentage();
     }
 
-    public Progress GetProgress()
+    public static Progress GetProgress()
     {
+        if (_progress == null) _progress = new Progress();
         return _progress;
     }
 

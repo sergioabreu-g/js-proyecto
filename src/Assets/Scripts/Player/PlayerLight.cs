@@ -24,7 +24,7 @@ public class PlayerLight : MonoBehaviour
 
     public void updateLevel()
     {
-        float spotlightMultiplier = player.GetProgress().getSpotlightMultiplier();
+        float spotlightMultiplier = Player.GetProgress().getSpotlightMultiplier();
 
         _light.spotAngle = baseAngle * spotlightMultiplier * progressMultiplier;
         _light.range = baseRange * spotlightMultiplier * progressMultiplier;

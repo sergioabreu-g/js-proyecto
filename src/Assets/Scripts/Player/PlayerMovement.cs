@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public void updateLevel()
     {
-        float multiplier = _player.GetProgress().getSpeedMultiplier();
+        float multiplier = Player.GetProgress().getSpeedMultiplier();
 
         currentAcceleration = initialAcceleration * multiplier;
         currentMaxSpeed = initialMaxSpeed * multiplier;
