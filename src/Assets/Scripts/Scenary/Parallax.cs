@@ -12,6 +12,8 @@ public class Parallax : MonoBehaviour
 
     void Start() {
         _startPos = transform.position;
+
+        if (cam == null) cam = Camera.main.transform;
     }
 
     void LateUpdate() {
