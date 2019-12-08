@@ -13,8 +13,6 @@ public class ImprovePanel : MonoBehaviour
 
     private void Start() {
         _progress = Player.GetProgress();
-        _progress.addCoins(5000);
-
         UpdateIcons(false);
     }
 

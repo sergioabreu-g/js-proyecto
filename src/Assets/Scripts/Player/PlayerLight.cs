@@ -13,7 +13,7 @@ public class PlayerLight : MonoBehaviour
     protected float baseIntensity;
     protected float baseAngle;
 
-    void Start()
+    void Awake()
     {
         _light = GetComponent<Light>();
 
