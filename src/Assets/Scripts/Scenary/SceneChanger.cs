@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
     public string sceneName;
-
+    public bool onCancel = true;
     public void ChangeScene() {
         SceneManager.LoadScene(sceneName);
     }
 
     private void Update() {
-        if (Input.GetButtonUp("Cancel")) ChangeScene();
+        if (onCancel && Input.GetButtonUp("Cancel")) ChangeScene();
     }
 }
