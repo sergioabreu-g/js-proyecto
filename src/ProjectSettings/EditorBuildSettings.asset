@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Boat.unity
     guid: 11162cee4e4219f47bb8dc50999c30da
   - enabled: 1
+    path: Assets/Scenes/Controls.unity
+    guid: a6e59927e51fa5349bfbab61a4bbf047
+  - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: d6fc6fd520ccacc44a47b5967c4ef150
   m_configObjects: {}
