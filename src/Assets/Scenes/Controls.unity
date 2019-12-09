@@ -339,8 +339,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -98.7}
-  m_SizeDelta: {x: 451.4, y: 500}
+  m_AnchoredPosition: {x: 0, y: -81}
+  m_SizeDelta: {x: 552.8, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &910335954
 MonoBehaviour:
@@ -375,7 +375,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.3
-  m_Text: "W        \nS\nA\nD\n\nE\nF\nESPACIO\nTAB\n\nESC"
+  m_Text: "W        \nS\nA\nD\nSHIFT\n\nE\nF\nCLICK DER. / ESPACIO\nTAB\n\nESC"
 --- !u!222 &910335955
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -866,8 +866,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -98.7}
-  m_SizeDelta: {x: 451.4, y: 500}
+  m_AnchoredPosition: {x: 0, y: -81}
+  m_SizeDelta: {x: 552.8, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1933082876
 MonoBehaviour:
@@ -902,7 +902,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.3
-  m_Text: "MOVIMIENTO ARRIBA\nMOVIMIENTO ABAJO\nMOVIMIENTO IZQUIERDA\nMOVIMIENTO DERECHA\n\nINTERACTUAR\nLINTERNA
+  m_Text: "MOVIMIENTO ARRIBA\nMOVIMIENTO ABAJO\nMOVIMIENTO IZQUIERDA\nMOVIMIENTO DERECHA\nIMPULSO\n\nINTERACTUAR\nLINTERNA
     ON/OFF\nSACAR FOTO\nMOSTRAR INFO\n\nVOLVER ATR\xC1S (MEN\xDAS)"
 --- !u!222 &1933082877
 CanvasRenderer:
