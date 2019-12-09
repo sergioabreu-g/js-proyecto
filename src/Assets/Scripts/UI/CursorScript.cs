@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
-public class Cursor : MonoBehaviour {
+public class CursorScript : MonoBehaviour {
     public PlayerPhotos playerPhotos;
     public Sprite defaultCursor;
     public Sprite canPhotographCursor;
@@ -12,6 +12,7 @@ public class Cursor : MonoBehaviour {
     private Image _img;
 
     void Start() {
+        Cursor.visible = false;
         _img = GetComponent<Image>();
     }
 

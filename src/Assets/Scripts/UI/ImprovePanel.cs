@@ -12,6 +12,7 @@ public class ImprovePanel : MonoBehaviour
     private Progress _progress;
 
     private void Start() {
+        Cursor.visible = true;
         _progress = Player.GetProgress();
         UpdateIcons(false);
     }

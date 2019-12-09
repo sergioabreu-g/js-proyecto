@@ -155,7 +155,7 @@ MonoBehaviour:
   rotationOffset: -90
   initialAcceleration: 10000
   initialMaxSpeed: 50
-  initialWaterRotationSpeed: 2.5
+  initialWaterRotationSpeed: 3.2
   airRotationSpeed: 5
   initialBoostCooldown: 5
   initialBoostForce: 2300
