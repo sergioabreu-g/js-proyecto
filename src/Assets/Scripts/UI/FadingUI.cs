@@ -26,12 +26,12 @@ public class FadingUI : MonoBehaviour
             _canvasGroup.alpha = _currentTime / fadeTime;
         else if (_currentTime > activeTime - fadeTime && _currentTime < activeTime)
             _canvasGroup.alpha =  (activeTime - _currentTime) / fadeTime;
-        else if
-            (_currentTime >= activeTime) {
+        else if (_currentTime >= activeTime) {
             _currentTime = 0;
             _canvasGroup.alpha = 0;
             gameObject.SetActive(false);
         }
         else _canvasGroup.alpha = 1;
+
     }
 }

@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     private Oxygen _oxygen;
     private PlayerPhotos _playerPhotos;
 
+    private List<Progress.Fish> _tempPhotos;
+
     public PlayerSpotlight _playerSpotlight;
     public FadingUI deadUI;
 
@@ -46,6 +48,8 @@ public class Player : MonoBehaviour
 
     public void Start()
     {
+        _tempPhotos = new List<Progress.Fish>();
+
         _rb = GetComponent<Rigidbody2D>();
         _trashCollector = GetComponent<TrashCollector>();
         _playerMovement = GetComponent<PlayerMovement>();
@@ -95,8 +99,7 @@ public class Player : MonoBehaviour
             _rb.gravityScale = _airGravityScale;
             _rb.drag = _airDrag;
 
-            _progress.addTrash(_trashCollector.getCurrentTrash());
-            _trashCollector.clearTrash();
+            updateProgress(false);
         }
 
     }
@@ -113,6 +116,21 @@ public class Player : MonoBehaviour
         float deadTime = deadUI.activeTime - deadUI.fadeTime - 0.1f;
         Invoke("activateBehaviours", deadTime);
         Invoke("resetTransform", deadTime);
+        updateProgress(true);
+    }
+
+    private void updateProgress(bool dead) {
+        if (dead) {
+            _progress.removeCoins(_tempPhotos.Count * _progress.getMoneyPerPhoto());
+            foreach (Progress.Fish fish in _tempPhotos)
+                _progress.removePhoto(fish);
+        }
+        else {
+            _progress.addTrash(_trashCollector.getCurrentTrash());
+        }
+
+        _tempPhotos.Clear();
+        _trashCollector.clearTrash();
     }
 
     public void resetTransform()
@@ -138,9 +156,7 @@ public class Player : MonoBehaviour
     {
         _playerMovement.updateLevel();
         foreach (PlayerLight pLight in _playerLights)
-        {
             pLight.updateLevel();
-        }
 
         _trashCollector.updateLevel();
         _oxygen.updateLevel();
@@ -162,5 +178,10 @@ public class Player : MonoBehaviour
         _rb.gravityScale = _airGravityScale;
 
         updateInsideWater();
+    }
+
+    public void photographFish(Progress.Fish fish) {
+        _progress.photographFish(fish);
+        _tempPhotos.Add(fish);
     }
 }

@@ -8,6 +8,24 @@ using UnityEngine;
 public class Progress {
     public enum Fish {
         ATUN,
+        ALACHA,
+        BONITO,
+        CIRUJANO_AZUL,
+        EMPERADOR,
+        GRAMMA_LORETO,
+        JUREL,
+        MERO,
+        MOJARRA,
+        PARGO_ROJO,
+        LORO,
+        PEZ_TROMPETERO,
+        PEZ_GLOBO,
+        PES_MARIPOSA_NARIGONA,
+        PEZ_PAYASO,
+        PEZ_VERDE_FREDDY,
+        SALMON,
+        SALMONETE_DE_ROCA,
+        TORDO_DE_5MANCHAS
     }
     public static readonly int[] oxygenTimes = { 40, 60, 80, 100, 130 };
     public static readonly int[] maxTrash = { 5, 8, 12, 16, 20 };
@@ -23,7 +41,6 @@ public class Progress {
     private int _oxygenLevel = 0, _trashLevel = 0, _speedLevel = 0, _spotlightLevel = 0;
 
     private Dictionary<Fish, bool> _fishPhotos;
-    private Fish _lastCapture;
 
     public Progress()
     {
@@ -42,10 +59,12 @@ public class Progress {
         if (!_fishPhotos[fish])
         {
             _fishPhotos[fish] = true;
-            _lastCapture = fish;
-
             if (earnCoins) addCoins(coinsPerPhoto);
         }
+    }
+
+    public void removePhoto(Fish fish) {
+        _fishPhotos[fish] = false;
     }
 
     public int photosMade()
@@ -187,5 +206,13 @@ public class Progress {
 
     public bool isSpotlightMaxed() {
         return _spotlightLevel == spotlightMultipliers.Length - 1;
+    }
+
+    public int getMoneyPerPhoto() {
+        return coinsPerPhoto;
+    }
+
+    public int getMoneyPerTrash() {
+        return coinsPerTrash;
     }
 }

@@ -1352,7 +1352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7319b03553f324abf80f09bc4c2f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinsPerUpgrade: 65
+  coinsPerUpgrade: 60
   plusOxygen: {fileID: 349317584}
   plusSpeed: {fileID: 1405091417}
   plusTrash: {fileID: 366019731}
@@ -1641,6 +1641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: MainGame
+  onCancel: 1
 --- !u!1 &1763196066
 GameObject:
   m_ObjectHideFlags: 0

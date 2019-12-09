@@ -40,23 +40,20 @@ public class PlayerPhotos : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         Fish fish = collision.gameObject.GetComponent<Fish>();
-        if (fish != null) _fishOnRange = fish;
+        if (fish != null && !Player.GetProgress().getFishPhoto(fish.fishType)) _fishOnRange = fish;
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        _fishOnRange = null;
+        Fish fish = collision.gameObject.GetComponent<Fish>();
+        if (fish == _fishOnRange) _fishOnRange = null;
     }
 
     public void photographFish(Fish fish)
     {
-        if (!Player.GetProgress().getFishPhoto(fish.fishType))
-        {
-            Player.GetProgress().photographFish(fish.fishType);
-            photoUI.SetActive(true);
-            _photoUIText.text = fish.fishName;
-            _photoUIImage.sprite = fish.getSprite();
-            fish.deactivateTrail();
-        }
+        player.photographFish(fish.fishType);
+        photoUI.SetActive(true);
+        _photoUIText.text = fish.fishName;
+        _photoUIImage.sprite = fish.getSprite();
     }
 
     public bool canPhotograph() {
