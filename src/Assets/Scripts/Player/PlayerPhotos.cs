@@ -13,6 +13,8 @@ public class PlayerPhotos : MonoBehaviour
     private Text _photoUIText;
     private Image _photoUIImage;
 
+    private Fish _fishOnRange;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +26,10 @@ public class PlayerPhotos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _photoCollider.enabled = Input.GetButtonDown("Photo");
-        if (!_photoCollider.enabled) return;
+        if (_fishOnRange != null && Input.GetButtonDown("Photo")) {
+            photographFish(_fishOnRange);
+            _fishOnRange = null;
+        }
 
         Vector3 mouseScreen = Input.mousePosition;
         Vector3 mouse = Camera.main.ScreenToWorldPoint(mouseScreen);
@@ -34,10 +38,13 @@ public class PlayerPhotos : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, -mouseAngle);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
+    private void OnTriggerEnter2D(Collider2D collision) {
         Fish fish = collision.gameObject.GetComponent<Fish>();
-        if (fish != null) photographFish(fish);
+        if (fish != null) _fishOnRange = fish;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
+        _fishOnRange = null;
     }
 
     public void photographFish(Fish fish)
@@ -50,5 +57,9 @@ public class PlayerPhotos : MonoBehaviour
             _photoUIImage.sprite = fish.getSprite();
             fish.deactivateTrail();
         }
+    }
+
+    public bool canPhotograph() {
+        return _fishOnRange != null;
     }
 }
