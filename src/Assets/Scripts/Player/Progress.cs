@@ -29,7 +29,7 @@ public class Progress {
     }
     public static readonly int[] oxygenTimes = { 40, 60, 80, 100, 130 };
     public static readonly int[] maxTrash = { 5, 8, 12, 16, 20 };
-    public static readonly float[] speedMultipliers = { 0.8f, 0.87f, 0.95f, 1.03f, 1.12f };
+    public static readonly float[] speedMultipliers = { 1f, 1.08f, 1.17f, 1.26f, 1.35f };
     public static readonly float[] spotlightMultipliers = { 1, 1.15f, 1.3f, 1.5f, 1.7f };
 
     public const int coinsPerTrash = 5;
