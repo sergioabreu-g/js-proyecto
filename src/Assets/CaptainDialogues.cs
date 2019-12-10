@@ -11,6 +11,13 @@ public class CaptainDialogues : MonoBehaviour {
     void Start()
     {
         _text = GetComponent<Text>();
-        _text.text = dialogues[Player.GetProgress().getStoryProgress()]; 
+        int progress = Player.GetProgress().getStoryProgress();
+        if (progress < dialogues.Length)
+            _text.text = dialogues[progress]; 
+        else {
+#if UNITY_EDITOR
+            Debug.LogError("No dialogue defined for level " + progress);
+#endif
+        }
     }
 }

@@ -1728,12 +1728,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogues:
-  - "Cada mejora cuesta 60 monedas. Cons\xEDgueme buenas fotos y recoge basura, y
-    te recompensar\xE9 debidamente."
-  - 
-  - 
-  - 
-  - 
+  - "Cons\xEDgueme buenas fotos y recoge basura, y te recompensar\xE9 debidamente."
+  - "Enhorabuena por tus primeras fotos, \xA1han quedado genial!"
+  - "Hay mucha m\xE1s basura de la que me esperaba, esto va de mal en peor..."
+  - "El estado de este mar es terrible, hay m\xE1s basura que peces."
+  - "V\xE1monos cuanto antes, necesito informar a la prensa sobre la situaci\xF3n."
 --- !u!1 &1763196066
 GameObject:
   m_ObjectHideFlags: 0

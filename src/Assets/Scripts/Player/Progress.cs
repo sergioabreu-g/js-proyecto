@@ -40,6 +40,7 @@ public class Progress {
 
     private int _oxygenLevel = 0, _trashLevel = 0, _speedLevel = 0, _spotlightLevel = 0;
     private int _storyProgress = 0;
+    private int[] _storyPhotoCheckpoints = { 1, 5, 10, 15, 19 };
 
     private Dictionary<Fish, bool> _fishPhotos;
 
@@ -222,6 +223,12 @@ public class Progress {
     }
 
     public int getStoryProgress() {
-        return _storyProgress;
+        int photos = photosMade();
+        int i = 0;
+        for (; i < _storyPhotoCheckpoints.Length; i++) {
+            if (photos < _storyPhotoCheckpoints[i]) break;
+        }
+
+        return i;
     }
 }
