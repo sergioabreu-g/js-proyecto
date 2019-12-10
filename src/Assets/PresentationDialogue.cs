@@ -17,7 +17,7 @@ public class PresentationDialogue : MonoBehaviour
     void Start()
     {
         _text = GetComponent<Text>();
-        _text.text = dialogues[0];
+        _text.text = dialogues[_currentText];
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class PresentationDialogue : MonoBehaviour
     }
 
     private void nextText() {
-        if (_currentText < dialogues.Length - 1)
+        if (_currentText < dialogues.Length)
             _text.text = dialogues[_currentText++];
         else SceneManager.LoadScene(nextScene);
     }

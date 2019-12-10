@@ -298,6 +298,8 @@ MonoBehaviour:
     a la acumulaci\xF3n de basura."
   - "Me gustar\xEDa ir a comprobarlo, y ver si podemos conseguir superar aquellas
     antiguas fotos con las c\xE1maras de hoy en d\xEDa."
+  - "Te recompensar\xE9 por cada foto que hagas, y te vender\xE9 mejor equipo si lo
+    necesitas."
   - "\xA1En marcha!"
   nextScene: MainGame
 --- !u!1 &802401441
