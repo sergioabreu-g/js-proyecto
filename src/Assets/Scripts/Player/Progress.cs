@@ -39,6 +39,7 @@ public class Progress {
     private int _collectedTrash = 0;
 
     private int _oxygenLevel = 0, _trashLevel = 0, _speedLevel = 0, _spotlightLevel = 0;
+    private int _storyProgress = 0;
 
     private Dictionary<Fish, bool> _fishPhotos;
 
@@ -214,5 +215,13 @@ public class Progress {
 
     public int getMoneyPerTrash() {
         return coinsPerTrash;
+    }
+
+    public void setStoryProgress(int storyProgress) {
+        _storyProgress = storyProgress;
+    }
+
+    public int getStoryProgress() {
+        return _storyProgress;
     }
 }
