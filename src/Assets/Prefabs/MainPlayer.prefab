@@ -182,6 +182,7 @@ MonoBehaviour:
   _waterDrag: 2
   _playerSpotlight: {fileID: 7209450967198649072}
   deadUI: {fileID: 0}
+  initialVel: {x: 15, y: 0, z: 0}
 --- !u!114 &7209450966906126874
 MonoBehaviour:
   m_ObjectHideFlags: 0

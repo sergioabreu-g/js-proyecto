@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
 
     public PlayerSpotlight _playerSpotlight;
     public FadingUI deadUI;
+    public Vector3 initialVel;
 
     public void Awake()
     {
@@ -137,7 +138,7 @@ public class Player : MonoBehaviour
     {
         transform.position = initialPos.position;
         transform.rotation = initialPos.rotation;
-        _rb.velocity = Vector3.zero;
+        _rb.velocity = initialVel;
 
         updateInsideWater();
     }
