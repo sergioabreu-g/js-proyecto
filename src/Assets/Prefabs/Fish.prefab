@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7397089842419079005}
   - component: {fileID: 7397089842419079000}
   - component: {fileID: 7397089842419079007}
-  m_Layer: 0
+  - component: {fileID: 6684916306817892133}
+  m_Layer: 8
   m_Name: Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +100,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1093333, y: 0.424}
+    oldSize: {x: 1.28, y: 0.48923078}
     newSize: {x: 16.64, y: 6.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -124,3 +125,20 @@ MonoBehaviour:
   fishName: "AT\xDAN"
   sortingOrderPrePhoto: 3
   sortingOrderPostPhoto: 2
+--- !u!114 &6684916306817892133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7397089842419079004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e177203078ac44547bd7b8235e91330c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  init: {x: 6, y: 1, z: 0}
+  final: {x: -3, y: 0, z: 0}
+  speed: 3
+  rotOffset: 20
+  rotSpeed: 10
