@@ -6,7 +6,6 @@ using UnityEngine;
 public class Fish : MonoBehaviour
 {
     public Progress.Fish fishType;
-    public string fishName = "ATÚN";
     public int sortingOrderPrePhoto;
     public int sortingOrderPostPhoto;
 

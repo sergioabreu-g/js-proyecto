@@ -27,6 +27,29 @@ public class Progress {
         SALMONETE_DE_ROCA,
         TORDO_DE_5MANCHAS
     }
+
+    public static readonly string[] FishName = {
+        "ATÚN",
+        "ALACHA",
+        "BONITO",
+        "CIRUJANO AZUL",
+        "EMPERADOR",
+        "GRAMMA LORETO",
+        "JUREL",
+        "MERO",
+        "MOJARRA",
+        "PARGO ROJO",
+        "LORO",
+        "PEZ TROMPETERO",
+        "PEZ GLOBO",
+        "PEZ MARIPOSA NARIGONA",
+        "PEZ PAYASO",
+        "PEZ VERDE FREDDY",
+        "SALMÓN",
+        "SALMONETE DE ROCA",
+        "TORDO DE 5 MANCHAS",
+    };
+
     public static readonly int[] oxygenTimes = { 40, 60, 80, 100, 130 };
     public static readonly int[] maxTrash = { 5, 8, 12, 16, 20 };
     public static readonly float[] speedMultipliers = { 1f, 1.08f, 1.17f, 1.26f, 1.35f };

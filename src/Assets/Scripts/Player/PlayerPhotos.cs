@@ -52,7 +52,7 @@ public class PlayerPhotos : MonoBehaviour
     {
         player.photographFish(fish.fishType);
         photoUI.SetActive(true);
-        _photoUIText.text = fish.fishName;
+        _photoUIText.text = Progress.FishName[(int)fish.fishType];
         _photoUIImage.sprite = fish.getSprite();
     }
 
