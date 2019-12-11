@@ -44,7 +44,7 @@ public class Oxygen : MonoBehaviour {
         fixedColorPercent = Mathf.Clamp(fixedColorPercent, 0, 1);
         Color currentColor = Color.Lerp(lowOxygenColor, fullOxygenColor, fixedColorPercent);
 
-        oxygenNumber.text = ((int)(getCurrentOxygen() + 1)).ToString();
+        oxygenNumber.text = ((int)(getCurrentOxygen() + 1)).ToString() + "s";
         oxygenNumber.color = currentColor;
 
         float intensityModifier = 3 / (currentColor.r + currentColor.g + currentColor.b);

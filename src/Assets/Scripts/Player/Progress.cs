@@ -78,6 +78,10 @@ public class Progress {
         return count;
     }
 
+    public float photosPercentage() {
+        return (float)photosMade() / _fishPhotos.Count;
+    }
+
     public int totalFish()
     {
         return _fishPhotos.Count;

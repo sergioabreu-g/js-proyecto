@@ -27,8 +27,8 @@ public class PresentationDialogue : MonoBehaviour
     }
 
     private void nextText() {
-        if (_currentText < dialogues.Length)
-            _text.text = dialogues[_currentText++];
+        if (_currentText < dialogues.Length - 1)
+            _text.text = dialogues[++_currentText];
         else SceneManager.LoadScene(nextScene);
     }
 }

@@ -122,12 +122,12 @@ public class Player : MonoBehaviour
 
     private void updateProgress(bool dead) {
         if (dead) {
-            _progress.removeCoins(_tempPhotos.Count * _progress.getMoneyPerPhoto());
             foreach (Progress.Fish fish in _tempPhotos)
                 _progress.removePhoto(fish);
         }
         else {
             _progress.addTrash(_trashCollector.getCurrentTrash());
+            _progress.addCoins(_tempPhotos.Count * _progress.getMoneyPerPhoto());
         }
 
         _tempPhotos.Clear();
@@ -182,7 +182,7 @@ public class Player : MonoBehaviour
     }
 
     public void photographFish(Progress.Fish fish) {
-        _progress.photographFish(fish);
+        _progress.photographFish(fish, false);
         _tempPhotos.Add(fish);
     }
 }
