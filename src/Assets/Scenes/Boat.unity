@@ -1502,7 +1502,7 @@ MonoBehaviour:
   speedMark: {fileID: 255326056}
   trashMark: {fileID: 101326315}
   spotlightMark: {fileID: 555277335}
-  markDistance: 15
+  markDistance: 55
 --- !u!1 &1405091417
 GameObject:
   m_ObjectHideFlags: 0

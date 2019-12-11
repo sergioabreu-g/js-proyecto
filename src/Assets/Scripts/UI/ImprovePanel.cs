@@ -59,9 +59,9 @@ public class ImprovePanel : MonoBehaviour
         int i = updateOnlyLast ? _progress.getOxygenLevel() - 1 : 1;
         for (; i < _progress.getOxygenLevel(); i++) {
             GameObject temp = Instantiate(oxygenMark, transform);
-            Vector2 pos = temp.transform.position;
+            Vector2 pos = temp.transform.localPosition;
             pos.x += i * markDistance;
-            temp.transform.position = pos;
+            temp.transform.localPosition = pos;
         }
     }
 
@@ -72,9 +72,9 @@ public class ImprovePanel : MonoBehaviour
         int i = updateOnlyLast ? _progress.getSpeedLevel() - 1 : 1;
         for (; i < _progress.getSpeedLevel(); i++) {
             GameObject temp = Instantiate(speedMark, transform);
-            Vector2 pos = temp.transform.position;
+            Vector2 pos = temp.transform.localPosition;
             pos.x += i * markDistance;
-            temp.transform.position = pos;
+            temp.transform.localPosition = pos;
         }
     }
 
@@ -85,9 +85,9 @@ public class ImprovePanel : MonoBehaviour
         int i = updateOnlyLast ? _progress.getTrashLevel() - 1 : 1;
         for (; i < _progress.getTrashLevel(); i++) {
             GameObject temp = Instantiate(trashMark, transform);
-            Vector2 pos = temp.transform.position;
+            Vector2 pos = temp.transform.localPosition;
             pos.x += i * markDistance;
-            temp.transform.position = pos;
+            temp.transform.localPosition = pos;
         }
     }
 
@@ -98,9 +98,9 @@ public class ImprovePanel : MonoBehaviour
         int i = updateOnlyLast ? _progress.getSpotlightLevel() - 1 : 1;
         for (; i < _progress.getSpotlightLevel(); i++) {
             GameObject temp = Instantiate(spotlightMark, transform);
-            Vector2 pos = temp.transform.position;
+            Vector2 pos = temp.transform.localPosition;
             pos.x += i * markDistance;
-            temp.transform.position = pos;
+            temp.transform.localPosition = pos;
         }
     }
 }

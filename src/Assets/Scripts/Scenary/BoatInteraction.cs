@@ -9,23 +9,28 @@ public class BoatInteraction : MonoBehaviour
     public UI_InteractionTip controlsTip;
     public string additionalText = "para entrar al barco";
 
-    private bool onRange = false;
+    private Player _player = null;
 
-    // Update is called once per frame
     void Update()
     {
-        if (onRange && Input.GetButtonUp("Interact")) {
+        if (_player != null && Input.GetButtonUp("Interact")) {
+            _player.updateProgress(false);
             SceneManager.LoadScene(boatSceneName);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        onRange = true;
+        _player = collision.GetComponent<Player>();
+        if (_player == null) return;
+
         controlsTip.setTip(additionalText);
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        onRange = false;
+        _player = collision.GetComponent<Player>();
+        if (_player == null) return;
+
         controlsTip.unsetTip();
+        _player = null;
     }
 }

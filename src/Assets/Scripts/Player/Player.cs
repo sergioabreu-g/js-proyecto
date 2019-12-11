@@ -120,7 +120,7 @@ public class Player : MonoBehaviour
         updateProgress(true);
     }
 
-    private void updateProgress(bool dead) {
+    public void updateProgress(bool dead) {
         if (dead) {
             foreach (Progress.Fish fish in _tempPhotos)
                 _progress.removePhoto(fish);
