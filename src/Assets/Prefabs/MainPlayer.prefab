@@ -158,7 +158,7 @@ MonoBehaviour:
   initialWaterRotationSpeed: 3.2
   airRotationSpeed: 5
   initialBoostCooldown: 5
-  initialBoostForce: 2300
+  initialBoostForce: 1700
   movementModifier: 1
 --- !u!114 &7209450966906126877
 MonoBehaviour:
@@ -178,7 +178,7 @@ MonoBehaviour:
   _waterGravityScale: 0.03
   _airGravityScale: 0.85
   _waterUpperLimit: 1.4
-  _airDrag: 0
+  _airDrag: 0.3
   _waterDrag: 2
   _playerSpotlight: {fileID: 7209450967198649072}
   deadUI: {fileID: 0}

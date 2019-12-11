@@ -15,13 +15,11 @@ public class TrashCollector : MonoBehaviour
     }
 
     public bool addTrash(int trash = 1) {
-        if (trash > 0 && currentTrash < maxTrash) {
-            currentTrash = Mathf.Clamp(currentTrash + trash, 0, maxTrash);
-            _player.updateTrash();
-            return true;
-        }
+        if (trash < 0) return false;
 
-        return false;
+        currentTrash += trash;
+        _player.updateTrash();
+        return true;
     }
 
     public void clearTrash() {

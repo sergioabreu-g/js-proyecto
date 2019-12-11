@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 19416020}
   - component: {fileID: 19416022}
   - component: {fileID: 19416021}
+  - component: {fileID: 19416023}
   m_Layer: 5
   m_Name: TrashIndicator
   m_TagString: Untagged
@@ -152,6 +153,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &19416023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19416019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34d4bae8f0af7214d92197c654251972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &205323921
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +178,7 @@ GameObject:
   - component: {fileID: 205323924}
   - component: {fileID: 205323923}
   m_Layer: 5
-  m_Name: TrashIcon
+  m_Name: PhotosIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,8 +200,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -43.58, y: 0.000030517578}
-  m_SizeDelta: {x: 35, y: 35}
+  m_AnchoredPosition: {x: -47.935, y: 0.000033855}
+  m_SizeDelta: {x: 44.13, y: 44.126}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &205323924
 CanvasRenderer:
@@ -217,9 +231,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5b18d2052dee11349913fcd8fe76e422, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 77c3f37797be88f4788243111b515312, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -238,6 +252,7 @@ GameObject:
   - component: {fileID: 474621571}
   - component: {fileID: 474621573}
   - component: {fileID: 474621572}
+  - component: {fileID: 474621574}
   m_Layer: 5
   m_Name: PhotosIndicator
   m_TagString: Untagged
@@ -304,6 +319,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &474621574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474621570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fbc3617e784de044972a65f7e4f84ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &846479918
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,8 +365,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 21.7, y: 0.000030517578}
-  m_SizeDelta: {x: 83.58, y: 50}
+  m_AnchoredPosition: {x: 31.4, y: -0.000010088}
+  m_SizeDelta: {x: 102.76, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &846479921
 CanvasRenderer:
@@ -382,9 +409,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '999
-
-'
+  m_Text: 99/99
 --- !u!1 &974239964
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +422,7 @@ GameObject:
   - component: {fileID: 974239967}
   - component: {fileID: 974239966}
   m_Layer: 5
-  m_Name: TrashNumber
+  m_Name: PhotosNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -463,7 +488,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '999
+  m_Text: '99%
 
 '
 --- !u!1 &998969769
@@ -683,8 +708,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -43.58, y: 0.000030517578}
-  m_SizeDelta: {x: 35, y: 35}
+  m_AnchoredPosition: {x: -52, y: 1.45}
+  m_SizeDelta: {x: 52.9, y: 52.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1143015099
 CanvasRenderer:
@@ -714,9 +739,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5b18d2052dee11349913fcd8fe76e422, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d7ce3d1d922d2af479332f437293919b, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -891,6 +916,7 @@ GameObject:
   - component: {fileID: 1724620412}
   - component: {fileID: 1724620414}
   - component: {fileID: 1724620413}
+  - component: {fileID: 1724620415}
   m_Layer: 5
   m_Name: CoinsIndicator
   m_TagString: Untagged
@@ -957,6 +983,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1724620415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724620411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e7299120d002b4e8bf1134f83b24e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1962656941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,8 +1198,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -44.29, y: 0.7}
-  m_SizeDelta: {x: 88.58, y: 91.4}
+  m_AnchoredPosition: {x: -49.1, y: 6.9}
+  m_SizeDelta: {x: 96.2, y: 101.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8933476950584735633
 CanvasRenderer:
@@ -1279,7 +1317,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '99
+  m_Text: '990s
+
 
 '
 --- !u!1 &8387014858214007770

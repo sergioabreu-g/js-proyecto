@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     public PlayerSpotlight _playerSpotlight;
     public FadingUI deadUI;
     public Vector3 initialVel;
+    public float movementMultiplierWhenFull = 0.4f;
 
     public void Awake()
     {
@@ -144,7 +145,10 @@ public class Player : MonoBehaviour
     }
 
     public void updateTrash() {
-        _playerMovement.movementModifier = 1 - _trashCollector.getTrashPercentage();
+        if (_trashCollector.getCurrentTrash() > _trashCollector.maxTrash)
+            _playerMovement.movementModifier = movementMultiplierWhenFull;
+        else
+            _playerMovement.movementModifier = 1;
     }
 
     public static Progress GetProgress()

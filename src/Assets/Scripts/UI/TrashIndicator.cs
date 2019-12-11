@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TrashIndicator : MonoBehaviour
 {
     public TrashCollector player;
+    public Color normalColor, fullColor;
 
     private Text _text;
 
@@ -18,5 +19,8 @@ public class TrashIndicator : MonoBehaviour
     void Update()
     {
         _text.text = player.getCurrentTrash() + " / " + player.maxTrash;
+
+        if (player.getCurrentTrash() > player.maxTrash) _text.color = fullColor;
+        else _text.color = normalColor;
     }
 }

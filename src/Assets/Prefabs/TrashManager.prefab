@@ -43,4 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3842730ea64ae48a1312e10dc335ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trashSprites: []
+  trashSprites:
+  - {fileID: 0}
+  - {fileID: 0}
