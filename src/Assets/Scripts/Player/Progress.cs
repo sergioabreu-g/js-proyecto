@@ -64,6 +64,8 @@ public class Progress {
     private int _oxygenLevel = 0, _trashLevel = 0, _speedLevel = 0, _spotlightLevel = 0;
     private int _storyProgress = 0;
     private int[] _storyPhotoCheckpoints = { 1, 5, 10, 15, 19 };
+    private bool _gameFinished = false;
+    private bool _newspaperWasShown = false;
 
     private Dictionary<Fish, bool> _fishPhotos;
 
@@ -247,6 +249,9 @@ public class Progress {
 
     public void setStoryProgress(int storyProgress) {
         _storyProgress = storyProgress;
+
+        if (_storyProgress == _storyPhotoCheckpoints.Length - 1)
+            _gameFinished = true;
     }
 
     public int getStoryProgress() {
@@ -257,5 +262,20 @@ public class Progress {
         }
 
         return i;
+    }
+
+    public bool isGameFinished()
+    {
+        return _gameFinished;
+    }
+
+    public void setNewspaperShown(bool shown)
+    {
+        _newspaperWasShown = shown;
+    }
+
+    public bool wasNewsPaperShown()
+    {
+        return _newspaperWasShown;
     }
 }

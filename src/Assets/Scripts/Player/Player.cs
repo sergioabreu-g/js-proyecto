@@ -157,6 +157,11 @@ public class Player : MonoBehaviour
         return _progress;
     }
 
+    public static Progress ResetProgress() {
+        _progress = new Progress();
+        return _progress;
+    }
+
     public void updateAllLevels()
     {
         _playerMovement.updateLevel();

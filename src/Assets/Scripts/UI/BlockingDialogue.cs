@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Text))]
-public class PresentationDialogue : MonoBehaviour
+public class BlockingDialogue : MonoBehaviour
 {
     public string[] dialogues;
     public string nextScene;
