@@ -16,6 +16,7 @@ public class SceneChanger : MonoBehaviour
             Debug.LogWarning("RESETTING PROGRESS");
 #endif
             Player.ResetProgress();
+            TrashManager.reset();
         }
 
         SceneManager.LoadScene(sceneName);

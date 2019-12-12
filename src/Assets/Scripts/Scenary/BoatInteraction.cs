@@ -22,7 +22,7 @@ public class BoatInteraction : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         _player = collision.GetComponent<Player>();
         if (_player == null) return;
-
+        _player.giveTrash();
         controlsTip.setTip(additionalText);
     }
 

@@ -127,11 +127,17 @@ public class Player : MonoBehaviour
                 _progress.removePhoto(fish);
         }
         else {
-            _progress.addTrash(_trashCollector.getCurrentTrash());
+        //    _progress.addTrash(_trashCollector.getCurrentTrash());
             _progress.addCoins(_tempPhotos.Count * _progress.getMoneyPerPhoto());
         }
 
         _tempPhotos.Clear();
+        //_trashCollector.clearTrash();
+    }
+
+    public void giveTrash()
+    {
+        _progress.addTrash(_trashCollector.getCurrentTrash());
         _trashCollector.clearTrash();
     }
 

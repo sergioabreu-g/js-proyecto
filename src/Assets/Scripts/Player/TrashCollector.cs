@@ -38,7 +38,8 @@ public class TrashCollector : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) {
         Trash trash = collision.gameObject.GetComponent<Trash>();
         if (trash != null && addTrash()) {
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
+            TrashManager.collectGarbage(collision.transform.GetSiblingIndex());
         }
     }
 

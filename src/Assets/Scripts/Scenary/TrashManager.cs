@@ -2,21 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrashManager : MonoBehaviour
+public class TrashManager: MonoBehaviour
 {
-    public Sprite[] trashSprites;
+    private static bool started = false;
+    private static bool[] garbageState = { };
 
-    private Trash[] trash;
+    public static void reset()
+    {
+        started = false;
+    }
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        if (!started)
+        {
+            garbageState = new bool[transform.childCount];
+            started = true;
+        }
+        foreach (Transform child in transform)
+        {
+            //Debug.Log(child.GetSiblingIndex());
+            if (garbageState[child.GetSiblingIndex()])
+                child.gameObject.SetActive(false);
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void collectGarbage(int index)
     {
-        
+        garbageState[index] = true;
     }
+
 }
