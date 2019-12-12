@@ -50,6 +50,7 @@ public class Progress {
         "TORDO DE 5 MANCHAS",
     };
 
+
     public static readonly int[] oxygenTimes = { 40, 60, 80, 100, 130 };
     public static readonly int[] maxTrash = { 5, 8, 12, 16, 20 };
     public static readonly float[] speedMultipliers = { 1f, 1.08f, 1.17f, 1.26f, 1.35f };
@@ -64,8 +65,10 @@ public class Progress {
     private int _oxygenLevel = 0, _trashLevel = 0, _speedLevel = 0, _spotlightLevel = 0;
     private int _storyProgress = 0;
     private int[] _storyPhotoCheckpoints = { 1, 5, 10, 15, 19 };
+    public static readonly int[] trashCheckpoints = { 0, 50, 100 };
     private bool _gameFinished = false;
     private bool _newspaperWasShown = false;
+    private int _trashStoryLevel = 0;
 
     private Dictionary<Fish, bool> _fishPhotos;
 
@@ -195,6 +198,9 @@ public class Progress {
         if (trash <= 0) return;
         _collectedTrash += trash;
         if (earnCoins) addCoins(trash * coinsPerTrash);
+
+        for (int i = trashCheckpoints.Length; i >= 0; i++)
+            if (_collectedTrash < trashCheckpoints[i]) ;
     }
 
     public void addCoins(int coins)
@@ -277,5 +283,15 @@ public class Progress {
     public bool wasNewsPaperShown()
     {
         return _newspaperWasShown;
+    }
+
+    public int getCollectedTrash()
+    {
+        return _collectedTrash;
+    }
+
+    public int getTrashStoryLevel()
+    {
+        return _trashStoryLevel;
     }
 }
