@@ -199,8 +199,12 @@ public class Progress {
         _collectedTrash += trash;
         if (earnCoins) addCoins(trash * coinsPerTrash);
 
-        //for (int i = trashCheckpoints.Length; i >= 0; i++)
-        //    if (_collectedTrash < trashCheckpoints[i]) ;
+        for (int i = 1; i < trashCheckpoints.Length; i++)
+            if (_collectedTrash < trashCheckpoints[i]) {
+                if (i - 1 != _trashStoryLevel) setNewspaperShown(false);
+                _trashStoryLevel = i - 1;
+                break;
+            }
     }
 
     public void addCoins(int coins)
