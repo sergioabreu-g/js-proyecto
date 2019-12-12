@@ -13,7 +13,6 @@ public class NewspaperTitle : MonoBehaviour
     void Start()
     {
         _text = GetComponent<Text>();
-        Player.GetProgress().addTrash(100);
 
         if (finals.Length != Progress.trashCheckpoints.Length)
         {
