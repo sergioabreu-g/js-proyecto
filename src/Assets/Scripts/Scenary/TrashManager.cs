@@ -12,7 +12,7 @@ public class TrashManager: MonoBehaviour
         started = false;
     }
 
-    void Start()
+    void Awake()
     {
         if (!started)
         {
