@@ -12,6 +12,8 @@ public class NewspaperTitle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = true;
+
         _text = GetComponent<Text>();
 
         if (finals.Length != Progress.trashCheckpoints.Length)

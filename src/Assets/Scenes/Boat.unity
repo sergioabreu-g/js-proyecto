@@ -1443,6 +1443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Final
   onCancel: 0
+  resetProgress: 0
 --- !u!114 &1351484660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1486,7 +1487,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1351484658}
         m_MethodName: ChangeScene
         m_Mode: 1
         m_Arguments:
@@ -2268,6 +2269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Album
   onCancel: 0
+  resetProgress: 0
 --- !u!224 &3041036976563012105
 RectTransform:
   m_ObjectHideFlags: 0

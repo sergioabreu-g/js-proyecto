@@ -63,10 +63,8 @@ public class Progress {
     private int _collectedTrash = 0;
 
     private int _oxygenLevel = 0, _trashLevel = 0, _speedLevel = 0, _spotlightLevel = 0;
-    private int _storyProgress = 0;
     private int[] _storyPhotoCheckpoints = { 1, 5, 10, 15, 19 };
     public static readonly int[] trashCheckpoints = { 0, 50, 100 };
-    private bool _gameFinished = false;
     private bool _newspaperWasShown = false;
     private int _trashStoryLevel = 0;
 
@@ -104,6 +102,26 @@ public class Progress {
             if (photo.Value) count++;
 
         return count;
+    }
+
+    public void DEBUG_photographAllFish() {
+#if UNITY_EDITOR
+        if (isGameFinished()) return;
+
+        Debug.LogWarning("DEBUG: Photographing all fish");
+
+        foreach (Fish fish in Enum.GetValues(typeof(Fish)))
+            _fishPhotos[fish] = true;
+#endif
+    }
+
+    public void DEBUG_nextTrashStoryLevel() {
+#if UNITY_EDITOR
+        if (_trashStoryLevel >= trashCheckpoints.Length - 1) return;
+
+        Debug.LogWarning("DEBUG: Next trash story checkpoint reached");
+        addTrash(trashCheckpoints[_trashStoryLevel + 1] - _collectedTrash, false);
+#endif
     }
 
     public float photosPercentage() {
@@ -199,11 +217,10 @@ public class Progress {
         _collectedTrash += trash;
         if (earnCoins) addCoins(trash * coinsPerTrash);
 
-        for (int i = 1; i < trashCheckpoints.Length; i++)
-            if (_collectedTrash < trashCheckpoints[i]) {
-                if (i - 1 != _trashStoryLevel) setNewspaperShown(false);
-                _trashStoryLevel = i - 1;
-                break;
+        for (int i = 0; i < trashCheckpoints.Length; i++)
+            if (_collectedTrash >= trashCheckpoints[i]) {
+                if (_trashStoryLevel != i) setNewspaperShown(false);
+                _trashStoryLevel = i;
             }
     }
 
@@ -211,6 +228,8 @@ public class Progress {
     {
         if (coins <= 0) return;
         _currentCoins += coins;
+
+
     }
 
     public void removeCoins(int coins)
@@ -257,26 +276,19 @@ public class Progress {
         return coinsPerTrash;
     }
 
-    public void setStoryProgress(int storyProgress) {
-        _storyProgress = storyProgress;
-
-        if (_storyProgress == _storyPhotoCheckpoints.Length - 1)
-            _gameFinished = true;
-    }
-
     public int getStoryProgress() {
         int photos = photosMade();
         int i = 0;
-        for (; i < _storyPhotoCheckpoints.Length; i++) {
+        for (; i < _storyPhotoCheckpoints.Length - 1; i++) {
             if (photos < _storyPhotoCheckpoints[i]) break;
         }
-
+        
         return i;
     }
 
     public bool isGameFinished()
     {
-        return _gameFinished;
+        return photosMade() == totalFish();
     }
 
     public void setNewspaperShown(bool shown)

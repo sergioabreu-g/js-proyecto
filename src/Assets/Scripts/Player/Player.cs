@@ -74,6 +74,14 @@ public class Player : MonoBehaviour
             _progress.upgradeTrashLevel();
             updateAllLevels();
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            _progress.DEBUG_nextTrashStoryLevel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            _progress.DEBUG_photographAllFish();
+        }
 #endif
     }
 
