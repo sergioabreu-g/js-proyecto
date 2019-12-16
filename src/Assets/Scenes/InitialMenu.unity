@@ -706,12 +706,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1292924953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbec096567948e94ca4cbb8fdf1e1fa4, type: 3}
+  m_Script: {fileID: 11500000, guid: c04d0007de8d1c9479710b3c4e3156b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: InitialMenu
   onCancel: 1
-  resetProgress: 0
 --- !u!114 &1292924956
 MonoBehaviour:
   m_ObjectHideFlags: 0

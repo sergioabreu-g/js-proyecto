@@ -18,7 +18,7 @@ public class SceneChanger : MonoBehaviour
             Player.ResetProgress();
             TrashManager.reset();
         }
-
+        Cursor.visible = true;
         SceneManager.LoadScene(sceneName);
     }
 
