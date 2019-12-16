@@ -709,7 +709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c04d0007de8d1c9479710b3c4e3156b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onCancel: 1
+  onCancel: 0
 --- !u!114 &1292924956
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class Oxygen : MonoBehaviour {
 
     public float initialColorDeadzone, finalColorDeadzone;
     public Text oxygenNumber;
+    public GameObject emergencyOx;
 
     private float currentOxygen = 15;
     private float[] _baseLightIntensities;
@@ -38,6 +39,7 @@ public class Oxygen : MonoBehaviour {
             currentOxygen = maxOxygen;
         }
 
+        emergencyOx.SetActive(currentOxygen < 10 + maxOxygen * 0.1f);
         // HUD
         float fixedColorPercent = getCurrentOxygenPercent();
         fixedColorPercent = (fixedColorPercent - finalColorDeadzone) / (initialColorDeadzone - finalColorDeadzone);
