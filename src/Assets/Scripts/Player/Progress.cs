@@ -64,7 +64,7 @@ public class Progress {
 
     private int _oxygenLevel = 0, _trashLevel = 0, _speedLevel = 0, _spotlightLevel = 0;
     private int[] _storyPhotoCheckpoints = { 1, 5, 10, 15, 19 };
-    public static readonly int[] trashCheckpoints = { 0, 50, 100 };
+    public static readonly int[] trashCheckpoints = { 0, 25, 50 };
     private bool _newspaperWasShown = false;
     private int _trashStoryLevel = 0;
 

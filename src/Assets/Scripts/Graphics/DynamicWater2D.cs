@@ -35,7 +35,10 @@ public class DynamicWater2D : MonoBehaviour {
 	public float spread = 0.1f;
 	public float collisionVelocityFactor = 0.04f;
     public float collisionMassFactor = 0.003f;
-
+    [Header("Color Settings")]
+    public float minBlue = 85f;
+    public float maxBlue = 255f;
+    public int colorTrashMax = 50;
     float[] velocities;
 	float[] accelerations;
 	float[] leftDeltas;
@@ -44,7 +47,7 @@ public class DynamicWater2D : MonoBehaviour {
 	private float timer;
 
 	private void Start () {
-		InitializePhysics ();
+        InitializePhysics ();
 		GenerateMesh ();
 		SetBoxCollider2D ();
     }
@@ -91,6 +94,10 @@ public class DynamicWater2D : MonoBehaviour {
 		if (waterMaterial) meshRenderer.sharedMaterial = waterMaterial;
         meshRenderer.sortingLayerName = SortingLayerName;
         meshRenderer.sortingOrder = OrderInLayer;
+        int trash = Player.GetProgress().getCollectedTrash();
+        Color tmp = meshRenderer.material.color;
+        tmp.b = Mathf.Clamp(((float)trash / (float)colorTrashMax) * ((maxBlue / 255f) - (minBlue / 255f)) + minBlue / 255f, 0, 1);
+        meshRenderer.material.SetColor("_Color", tmp);
 
         MeshFilter meshFilter = gameObject.AddComponent<MeshFilter> ();
 
