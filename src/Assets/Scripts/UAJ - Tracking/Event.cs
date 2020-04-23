@@ -16,7 +16,6 @@ public abstract class Event
 
     //override by each event type
     protected abstract void writeJSON(JsonWriter writer);
-
     public string ToJSON() {
         StringBuilder sb = new StringBuilder();
         StringWriter sw = new StringWriter(sb);
@@ -26,20 +25,33 @@ public abstract class Event
 
             writer.WriteStartObject();
             writer.WritePropertyName("EventType");
-            writer.WriteValue(type);
+            writer.WriteValue(type.ToString()); //to string more readable
             writer.WritePropertyName("timeStamp");
             writer.WriteValue(timeStamp);
 
             writeJSON(writer); //write son event properties
-
             writer.WriteEndObject();
         }
 
         return sb.ToString();
     }
+
+    protected abstract void writeCSV(StringWriter writer);
+    public string ToCSV() {
+        StringBuilder sb = new StringBuilder();
+        StringWriter sw = new StringWriter(sb);
+
+        sw.Write(type.ToString());
+        sw.Write(",");
+        sw.Write(timeStamp);
+        sw.Write(",");
+
+        writeCSV(sw); //write son event properties
+
+        return sb.ToString();
+    }
 }
 
-[System.Serializable]
 public class StartEvent: Event//, ISerializable
 {
     string id;
@@ -53,6 +65,9 @@ public class StartEvent: Event//, ISerializable
     protected override void writeJSON(JsonWriter writer) {
         writer.WritePropertyName("id");
         writer.WriteValue(id);
+    }
+    protected override void writeCSV(StringWriter writer) {
+        writer.Write(id);
     }
 }
 
@@ -69,6 +84,9 @@ public class EndEvent : Event
     protected override void writeJSON(JsonWriter writer) {
         throw new NotImplementedException();
     }
+    protected override void writeCSV(StringWriter writer) {
+        throw new NotImplementedException();
+    }
 }
 
 public class PhotoEvent : Event
@@ -82,6 +100,9 @@ public class PhotoEvent : Event
     }
 
     protected override void writeJSON(JsonWriter writer) {
+        throw new NotImplementedException();
+    }
+    protected override void writeCSV(StringWriter writer) {
         throw new NotImplementedException();
     }
 }
@@ -100,6 +121,9 @@ public class DeathEvent : Event
     protected override void writeJSON(JsonWriter writer) {
         throw new NotImplementedException();
     }
+    protected override void writeCSV(StringWriter writer) {
+        throw new NotImplementedException();
+    }
 }
 
 public class BuyUpgradeEvent : Event
@@ -116,6 +140,9 @@ public class BuyUpgradeEvent : Event
     protected override void writeJSON(JsonWriter writer) {
         throw new NotImplementedException();
     }
+    protected override void writeCSV(StringWriter writer) {
+        throw new NotImplementedException();
+    }
 }
 
 public class EnterBoatEvent : Event
@@ -130,6 +157,9 @@ public class EnterBoatEvent : Event
     }
 
     protected override void writeJSON(JsonWriter writer) {
+        throw new NotImplementedException();
+    }
+    protected override void writeCSV(StringWriter writer) {
         throw new NotImplementedException();
     }
 }

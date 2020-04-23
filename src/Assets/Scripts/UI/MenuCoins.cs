@@ -15,7 +15,8 @@ public class MenuCoins : MonoBehaviour
         //quick testing file system writing
         Debug.Log("Quick testing file system writing");
         Event e = new StartEvent("testing sesion");
-        ISerializer seri = new myJsonSerializer();
+        //ISerializer seri = new myJsonSerializer();
+        ISerializer seri = new myCSVSerializer();
         IPersistance pers = new FilePersistanceQueued(seri, "testing sesion");
 
         pers.Flush();
