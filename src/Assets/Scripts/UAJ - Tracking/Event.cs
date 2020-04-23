@@ -12,7 +12,7 @@ public enum EventType { START, END, PHOTO, DEATH, UPGRADE, ENTERBOAT}
 public abstract class Event
 {
     protected EventType type;
-    protected double timeStamp;
+    protected int timeStamp;
 
     //override by each event type
     protected abstract void writeJSON(JsonWriter writer);
@@ -55,19 +55,24 @@ public abstract class Event
 public class StartEvent: Event//, ISerializable
 {
     string id;
+    DateTime date;
     public StartEvent(string ident)
     {
         type = EventType.START;
         id = ident;
-        timeStamp = Time.time;
+        timeStamp = (int)(Time.time*1000);
+        date = System.DateTime.Now;
     }
 
     protected override void writeJSON(JsonWriter writer) {
         writer.WritePropertyName("id");
         writer.WriteValue(id);
+        writer.WritePropertyName("date");
+        writer.WriteValue(date);
     }
     protected override void writeCSV(StringWriter writer) {
-        writer.Write(id);
+        writer.Write(id); writer.Write(",");
+        writer.Write(date);
     }
 }
 
@@ -84,7 +89,7 @@ public class EndEvent : Event
     {
         type = EventType.END;
         id = ident;
-        timeStamp = Time.time;
+        timeStamp = (int)(Time.time * 1000);
     }
 
     protected override void writeJSON(JsonWriter writer) {
@@ -104,7 +109,7 @@ public class PhotoEvent : Event
     {
         fishType = fType;
         type = EventType.PHOTO;
-        timeStamp = Time.time;
+        timeStamp = (int)(Time.time * 1000);
     }
 
     protected override void writeJSON(JsonWriter writer) {
@@ -124,7 +129,7 @@ public class DeathEvent : Event
         fishPhotos = fPhotos;
         percentUpgrade = pUpgrades;
         type = EventType.DEATH;
-        timeStamp = Time.time;
+        timeStamp = (int)(Time.time * 1000);
     }
 
     protected override void writeJSON(JsonWriter writer) {
@@ -150,7 +155,7 @@ public class BuyUpgradeEvent : Event
         upgradeLevel = upLevel;
         upgradeType = upType;
         type = EventType.UPGRADE;
-        timeStamp = Time.time;
+        timeStamp = (int)(Time.time * 1000);
     }
 
     protected override void writeJSON(JsonWriter writer) {
@@ -173,7 +178,7 @@ public class EnterBoatEvent : Event
         numGarbage = nGarbage;
         money = mon;
         type = EventType.ENTERBOAT;
-        timeStamp = Time.time;
+        timeStamp = (int)(Time.time * 1000);
     }
 
     protected override void writeJSON(JsonWriter writer) {
