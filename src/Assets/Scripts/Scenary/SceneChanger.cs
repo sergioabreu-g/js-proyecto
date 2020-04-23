@@ -8,6 +8,7 @@ public class SceneChanger : MonoBehaviour
     public string sceneName;
     public bool onCancel = true;
     public bool resetProgress = false;
+    public bool startGame = false;
 
     public void ChangeScene() {
         if (resetProgress)
@@ -17,7 +18,12 @@ public class SceneChanger : MonoBehaviour
 #endif
             Player.ResetProgress();
             TrashManager.reset();
+            EventTracker.GetInstance().RegisterEndEvent();
         }
+
+        if (startGame)
+            EventTracker.GetInstance().RegisterStartEvent();
+
         Cursor.visible = true;
         SceneManager.LoadScene(sceneName);
     }

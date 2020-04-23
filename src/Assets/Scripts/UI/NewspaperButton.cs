@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NewspaperButton : SceneChanger
 {
-    void Start()
+    private void Start()
     {
         if (!Player.GetProgress().isGameFinished())
             gameObject.SetActive(false);

@@ -13,6 +13,19 @@ public abstract class Event
 {
     protected EventType type;
     protected int timeStamp;
+    protected bool flush = false;
+
+    public EventType GetEventType() {
+        return type;
+    }
+
+    public void SetFlush(bool flush) {
+        this.flush = flush;
+    }
+
+    public bool GetFlush() {
+        return flush;
+    }
 
     //override by each event type
     protected abstract void writeJSON(JsonWriter writer);
@@ -62,6 +75,7 @@ public class StartEvent: Event//, ISerializable
         id = ident;
         timeStamp = (int)(Time.time*1000);
         date = System.DateTime.Now;
+        flush = true;
     }
 
     protected override void writeJSON(JsonWriter writer) {
@@ -90,6 +104,7 @@ public class EndEvent : Event
         type = EventType.END;
         id = ident;
         timeStamp = (int)(Time.time * 1000);
+        flush = true;
     }
 
     protected override void writeJSON(JsonWriter writer) {
@@ -130,6 +145,7 @@ public class DeathEvent : Event
         percentUpgrade = pUpgrades;
         type = EventType.DEATH;
         timeStamp = (int)(Time.time * 1000);
+        flush = true;
     }
 
     protected override void writeJSON(JsonWriter writer) {

@@ -331,6 +331,16 @@ PrefabInstance:
       propertyPath: m_Text
       value: "SALIR AL MEN\xDA"
       objectReference: {fileID: 0}
+    - target: {fileID: 3224769859820796599, guid: e9d69da19ee1dbe489ee8ceb225be6bc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1870234707}
+    - target: {fileID: 3224769859820796599, guid: e9d69da19ee1dbe489ee8ceb225be6bc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeScene
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3224769859820796596, guid: e9d69da19ee1dbe489ee8ceb225be6bc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e9d69da19ee1dbe489ee8ceb225be6bc, type: 3}
@@ -1002,6 +1012,7 @@ MonoBehaviour:
   sceneName: InitialMenu
   onCancel: 0
   resetProgress: 1
+  startGame: 0
 --- !u!1001 &2057807633
 PrefabInstance:
   m_ObjectHideFlags: 0

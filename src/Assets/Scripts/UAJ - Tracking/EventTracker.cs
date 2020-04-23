@@ -21,7 +21,8 @@ public class EventTracker : MonoBehaviour
 
             id = System.DateTime.Now.ToString();
             events = new List<Event>(0);
-            RegisterStartEvent();
+
+            InvokeRepeating("Flush", 15, 15);
         }
         else
             Destroy(gameObject);
@@ -36,12 +37,22 @@ public class EventTracker : MonoBehaviour
         return Instance;
     }
 
+    public void Flush() {
+        if (debug)
+            Debug.Log("Telemetry: Event Tracker flushing");
+
+        // Do some flushing here boys
+    }
+
     public void TrackEvent(Event ev) {
         if (!trackingActive)
             return;
 
         if (debug)
             Debug.Log("Telemetry: tracking event " + ev.GetType() + ".");
+
+        if (ev.GetFlush())
+            Flush();
 
         events.Add(ev);
     }
