@@ -71,6 +71,12 @@ public class StartEvent: Event//, ISerializable
     }
 }
 
+// Aquí faltarían basura que tiene encima, mejoras desbloqueadas y
+// peces fotografiados
+
+// ¿Los peces fotografiados los guardamos solo como un int nPeces?
+// ¿No queríamos saber qué peces hay fotografiados y cuales no para ver los dificiles?
+// ¿O se "reconstruye" en base a eventos de fotografia?
 public class EndEvent : Event
 {
     string id;
@@ -82,10 +88,12 @@ public class EndEvent : Event
     }
 
     protected override void writeJSON(JsonWriter writer) {
-        throw new NotImplementedException();
+        writer.WritePropertyName("id");
+        writer.WriteValue(id);
+
     }
     protected override void writeCSV(StringWriter writer) {
-        throw new NotImplementedException();
+        writer.Write(id);
     }
 }
 
@@ -100,10 +108,11 @@ public class PhotoEvent : Event
     }
 
     protected override void writeJSON(JsonWriter writer) {
-        throw new NotImplementedException();
+        writer.WritePropertyName("FishType");
+        writer.WriteValue(fishType);
     }
     protected override void writeCSV(StringWriter writer) {
-        throw new NotImplementedException();
+        writer.Write(fishType);
     }
 }
 
@@ -119,10 +128,17 @@ public class DeathEvent : Event
     }
 
     protected override void writeJSON(JsonWriter writer) {
-        throw new NotImplementedException();
+        writer.WritePropertyName("numGarbage");
+        writer.WriteValue(numGarbage);
+        writer.WritePropertyName("percentUpgrade");
+        writer.WriteValue(percentUpgrade);
+        writer.WritePropertyName("numPhotos");
+        writer.WriteValue(fishPhotos);
     }
     protected override void writeCSV(StringWriter writer) {
-        throw new NotImplementedException();
+        writer.Write(numGarbage); writer.Write(",");
+        writer.Write(percentUpgrade); writer.Write(",");
+        writer.Write(fishPhotos);
     }
 }
 
@@ -138,10 +154,14 @@ public class BuyUpgradeEvent : Event
     }
 
     protected override void writeJSON(JsonWriter writer) {
-        throw new NotImplementedException();
+        writer.WritePropertyName("upgradeType");
+        writer.WriteValue(upgradeType);
+        writer.WritePropertyName("upgradeLevel");
+        writer.WriteValue(upgradeLevel);
     }
     protected override void writeCSV(StringWriter writer) {
-        throw new NotImplementedException();
+        writer.Write(upgradeType); writer.Write(",");
+        writer.Write(upgradeLevel);
     }
 }
 
@@ -157,9 +177,13 @@ public class EnterBoatEvent : Event
     }
 
     protected override void writeJSON(JsonWriter writer) {
-        throw new NotImplementedException();
+        writer.WritePropertyName("numGarbage");
+        writer.WriteValue(numGarbage);
+        writer.WritePropertyName("money");
+        writer.WriteValue(money);
     }
     protected override void writeCSV(StringWriter writer) {
-        throw new NotImplementedException();
+        writer.Write(numGarbage); writer.Write(",");
+        writer.Write(money);
     }
 }

@@ -26,6 +26,16 @@ public class MenuCoins : MonoBehaviour
         pers.Send(e);
         pers.Flush();
         pers.Flush();
+
+        pers.Send(new PhotoEvent(Progress.Fish.ATUN));
+        pers.Send(new DeathEvent(5, 1, 1));
+        pers.Send(new EnterBoatEvent(5, 20));
+        pers.Send(new BuyUpgradeEvent(2, 2));
+        pers.Send(new EndEvent("testing sesion"));
+        pers.Flush();
+
+
+
     }
 
     // Update is called once per frame
