@@ -9,6 +9,7 @@ public class EventTracker : MonoBehaviour
     [Header("General")] [SerializeField]
     private bool trackingActive = true;
     [SerializeField] private bool debug = false;
+    [SerializeField] private int flushTimer = 15;
 
     private List<Event> events;
     private string id;
@@ -22,7 +23,7 @@ public class EventTracker : MonoBehaviour
             id = System.DateTime.Now.ToString();
             events = new List<Event>(0);
 
-            InvokeRepeating("Flush", 15, 15);
+            InvokeRepeating("Flush", flushTimer, flushTimer);
         }
         else
             Destroy(gameObject);
@@ -51,10 +52,10 @@ public class EventTracker : MonoBehaviour
         if (debug)
             Debug.Log("Telemetry: tracking event " + ev.GetType() + ".");
 
+        events.Add(ev);
+
         if (ev.GetFlush())
             Flush();
-
-        events.Add(ev);
     }
 
     public void RegisterStartEvent() {
