@@ -2,16 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Newtonsoft.Json; //Libreria para JSON .Net
+using System;
+using System.Text;
+using System.IO; //writing custom jsons
+
 public enum EventType { START, END, PHOTO, DEATH, UPGRADE, ENTERBOAT}
 
 public abstract class Event
 {
     protected EventType type;
     protected double timeStamp;
+
+    //override by each event type
+    protected abstract void writeJSON(JsonWriter writer);
+
+    public string ToJSON() {
+        StringBuilder sb = new StringBuilder();
+        StringWriter sw = new StringWriter(sb);
+
+        using (JsonWriter writer = new JsonTextWriter(sw)) {
+            writer.Formatting = Formatting.Indented;
+
+            writer.WriteStartObject();
+            writer.WritePropertyName("EventType");
+            writer.WriteValue(type);
+            writer.WritePropertyName("timeStamp");
+            writer.WriteValue(timeStamp);
+
+            writeJSON(writer); //write son event properties
+
+            writer.WriteEndObject();
+        }
+
+        return sb.ToString();
+    }
 }
 
 [System.Serializable]
-public class StartEvent: Event, ISerializable
+public class StartEvent: Event//, ISerializable
 {
     string id;
     public StartEvent(string ident)
@@ -21,22 +50,9 @@ public class StartEvent: Event, ISerializable
         timeStamp = Time.time;
     }
 
-    public StartEvent() { id = "" } // Empty constructor required to compile.
-    // Implement this method to serialize data. The method is called on serialization.
-    public void GetObjectData(SerializationInfo info, StreamingContext context)
-    {
-        // Use the AddValue method to specify serialized values.
-        info.AddValue("type", type, typeof(EventType));
-        info.AddValue("id", id, typeof(string));
-        info.AddValue("timeStamp", timeStamp, typeof(double));
-    }
-    // The special constructor is used to deserialize values.
-    public MyItemType(SerializationInfo info, StreamingContext context)
-    {
-        // Reset the property value using the GetValue method.
-        type = (string) info.GetValue("type", typeof(EventType));
-        id = (string) info.GetValue("id", typeof(string));
-        timeStamp = (string) info.GetValue("timeStamp", typeof(double));
+    protected override void writeJSON(JsonWriter writer) {
+        writer.WritePropertyName("id");
+        writer.WriteValue(id);
     }
 }
 
@@ -49,6 +65,10 @@ public class EndEvent : Event
         id = ident;
         timeStamp = Time.time;
     }
+
+    protected override void writeJSON(JsonWriter writer) {
+        throw new NotImplementedException();
+    }
 }
 
 public class PhotoEvent : Event
@@ -59,6 +79,10 @@ public class PhotoEvent : Event
         fishType = fType;
         type = EventType.PHOTO;
         timeStamp = Time.time;
+    }
+
+    protected override void writeJSON(JsonWriter writer) {
+        throw new NotImplementedException();
     }
 }
 
@@ -72,6 +96,10 @@ public class DeathEvent : Event
         type = EventType.DEATH;
         timeStamp = Time.time;
     }
+
+    protected override void writeJSON(JsonWriter writer) {
+        throw new NotImplementedException();
+    }
 }
 
 public class BuyUpgradeEvent : Event
@@ -84,6 +112,10 @@ public class BuyUpgradeEvent : Event
         type = EventType.UPGRADE;
         timeStamp = Time.time;
     }
+
+    protected override void writeJSON(JsonWriter writer) {
+        throw new NotImplementedException();
+    }
 }
 
 public class EnterBoatEvent : Event
@@ -95,5 +127,9 @@ public class EnterBoatEvent : Event
         money = mon;
         type = EventType.ENTERBOAT;
         timeStamp = Time.time;
+    }
+
+    protected override void writeJSON(JsonWriter writer) {
+        throw new NotImplementedException();
     }
 }

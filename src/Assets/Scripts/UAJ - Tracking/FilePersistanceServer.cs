@@ -39,7 +39,7 @@ public class FilePersistanceServer : IPersistance
 
     //////////////////////////////////////////////////////////////////////////
 
-    public void Send(TrackerEvent tEvent) {
+    public void Send(Event tEvent) {
         eventQueue.Enqueue(serializer.Serialize(tEvent));
     }
 

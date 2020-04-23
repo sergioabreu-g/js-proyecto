@@ -8,6 +8,6 @@ using System.Collections.Generic;
  */
 public interface IPersistance
 {
-    void Send(TrackerEvent tEvent);
+    void Send(Event tEvent);
     void Flush();
 }
