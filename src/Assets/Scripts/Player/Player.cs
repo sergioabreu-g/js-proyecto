@@ -127,6 +127,12 @@ public class Player : MonoBehaviour
         Invoke("activateBehaviours", deadTime);
         Invoke("resetTransform", deadTime);
         updateProgress(true);
+
+        // TELEMETRY
+        EventTracker.GetInstance().RegisterDeathtEvent(
+        _progress.photosMade(), _progress.getCollectedTrash(),
+        _progress.getSpotlightLevel(), _progress.getSpeedLevel(),
+        _progress.getOxygenLevel(), _progress.getTrashLevel(), 4);
     }
 
     public void updateProgress(bool dead) {
@@ -147,6 +153,10 @@ public class Player : MonoBehaviour
     {
         _progress.addTrash(_trashCollector.getCurrentTrash());
         _trashCollector.clearTrash();
+    }
+
+    public int GetCurrentTrash() {
+        return _trashCollector.getCurrentTrash();
     }
 
     public void resetTransform()
@@ -207,5 +217,8 @@ public class Player : MonoBehaviour
     public void photographFish(Progress.Fish fish) {
         _progress.photographFish(fish, false);
         _tempPhotos.Add(fish);
+
+        // TELEMETRY
+        EventTracker.GetInstance().RegisterPhotoEvent(fish);
     }
 }

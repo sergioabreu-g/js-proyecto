@@ -149,8 +149,10 @@ public class DeathEvent : Event
 
 public class BuyUpgradeEvent : Event
 {
-    int upgradeLevel, upgradeType;
-    public BuyUpgradeEvent(int upLevel, int upType)
+    int upgradeLevel;
+    Progress.UpgradeType upgradeType;
+
+    public BuyUpgradeEvent(int upLevel, Progress.UpgradeType upType)
     {
         upgradeLevel = upLevel;
         upgradeType = upType;

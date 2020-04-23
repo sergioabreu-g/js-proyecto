@@ -28,6 +28,13 @@ public class Progress {
         TORDO_DE_5MANCHAS
     }
 
+    public enum UpgradeType {
+        OXYGEN,
+        SPEED,
+        TRASH,
+        SPOTLIGHT
+    }
+
     public static readonly string[] FishName = {
         "ATÚN",
         "ALACHA",
@@ -147,6 +154,10 @@ public class Progress {
     {
         if (_oxygenLevel >= oxygenTimes.Length - 1) return false;
         _oxygenLevel++;
+
+        // TELEMETRY
+        EventTracker.GetInstance().RegisterUpgradeEvent(_oxygenLevel, UpgradeType.OXYGEN);
+        
         return true;
     }
 
@@ -159,6 +170,10 @@ public class Progress {
     {
         if (_trashLevel >= maxTrash.Length - 1) return false;
         _trashLevel++;
+
+        // TELEMETRY
+        EventTracker.GetInstance().RegisterUpgradeEvent(_trashLevel, UpgradeType.TRASH);
+
         return true;
     }
 
@@ -171,6 +186,10 @@ public class Progress {
     {
         if (_speedLevel >= speedMultipliers.Length - 1) return false;
         _speedLevel++;
+
+        // TELEMETRY
+        EventTracker.GetInstance().RegisterUpgradeEvent(_speedLevel, UpgradeType.SPEED);
+
         return true;
     }
 
@@ -183,6 +202,10 @@ public class Progress {
     {
         if (_spotlightLevel >= spotlightMultipliers.Length - 1) return false;
         _spotlightLevel++;
+
+        // TELEMETRY
+        EventTracker.GetInstance().RegisterUpgradeEvent(_spotlightLevel, UpgradeType.SPOTLIGHT);
+
         return true;
     }
 

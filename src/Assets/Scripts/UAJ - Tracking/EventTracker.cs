@@ -6,23 +6,43 @@ using UnityEngine;
 
 public class EventTracker : MonoBehaviour
 {
+    [Header("General")] [SerializeField]
+    private bool trackingActive = true;
+    [SerializeField] private bool debug = false;
+
     private List<Event> events;
     private string id;
-    public static EventTracker Instance = null;
-    void Awake()
-    {
-        if (Instance == null)
-        {
+    private static EventTracker Instance = null;
+
+    private void Start() {
+        if (Instance == null) {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            id = System.DateTime.Now.ToString();
+            events = new List<Event>(0);
+            RegisterStartEvent();
         }
         else
-            Destroy(this);
-        id = System.DateTime.Now.ToString();
-        events = new List<Event>(0);
+            Destroy(gameObject);
     }
 
-    public void TrackEvent(Event ev)
-    {
+    private void OnDestroy() {
+        if (Instance == this)
+            RegisterEndEvent();
+    }
+
+    public static EventTracker GetInstance() {
+        return Instance;
+    }
+
+    public void TrackEvent(Event ev) {
+        if (!trackingActive)
+            return;
+
+        if (debug)
+            Debug.Log("Telemetry: tracking event " + ev.GetType() + ".");
+
         events.Add(ev);
     }
 
@@ -49,7 +69,7 @@ public class EventTracker : MonoBehaviour
         TrackEvent(ev);
     }
 
-    public void RegisterUpgradeEvent(int upLevel, int upType)
+    public void RegisterUpgradeEvent(int upLevel, Progress.UpgradeType upType)
     {
         BuyUpgradeEvent ev = new BuyUpgradeEvent(upLevel, upType);
         TrackEvent(ev);

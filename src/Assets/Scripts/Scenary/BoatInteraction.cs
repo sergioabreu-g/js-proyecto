@@ -17,6 +17,10 @@ public class BoatInteraction : MonoBehaviour
         if (_player != null && Input.GetButtonUp("Interact")) {
             _player.updateProgress(false);
 
+            // Telemetry
+            EventTracker.GetInstance().RegisterEnterEvent(_player.GetCurrentTrash(),
+                                                          Player.GetProgress().getCurrentCoins());
+
             if (Player.GetProgress().isGameFinished() && !Player.GetProgress().wasNewsPaperShown()) {
                 Player.GetProgress().setNewspaperShown(true);
                 SceneManager.LoadScene(newspaperSceneName);
