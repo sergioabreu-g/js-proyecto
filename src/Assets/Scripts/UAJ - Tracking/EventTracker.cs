@@ -1,8 +1,13 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 //struct TrackerConfig { }
+
+[System.Serializable]
+public enum PersistenceType { LOCAL_SYNCHRO, LOCAL_ASYNCHO, SERVER_ASYNCHRO};
+[System.Serializable]
+public enum SerializeType { JSON, CSV};
 
 public class EventTracker : MonoBehaviour
 {
@@ -11,7 +16,17 @@ public class EventTracker : MonoBehaviour
     [SerializeField] private bool debug = false;
     [SerializeField] private int flushTimer = 15;
 
+    [SerializeField] private PersistenceType pType = PersistenceType.LOCAL_SYNCHRO;
+    [SerializeField] private SerializeType sType = SerializeType.CSV;
+
+
+    private IPersistance persistence;
+    private ISerializer serializer;
+
+
+    // unused, en el enunciado aparece una lista de trackers?¿?¿?
     private List<Event> events;
+
     private string id;
     private static EventTracker Instance = null;
 
@@ -21,7 +36,12 @@ public class EventTracker : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             id = System.DateTime.Now.ToString();
+            id = id.Replace("/", "").Replace(" ", "_").Replace(":", ""); // folder format issue
             events = new List<Event>(0);
+
+            SetupPersistence();
+
+            //RegisterStartEvent();
 
             InvokeRepeating("Flush", flushTimer, flushTimer);
         }
@@ -34,6 +54,32 @@ public class EventTracker : MonoBehaviour
             RegisterEndEvent();
     }
 
+    private void SetupPersistence()
+    {
+        switch (sType)
+        {
+            case SerializeType.CSV:
+                serializer = new myCSVSerializer();
+                break;
+            case SerializeType.JSON:
+                serializer = new myJsonSerializer();
+                break;
+        }
+
+        switch (pType)
+        {
+            case PersistenceType.LOCAL_SYNCHRO:
+                persistence = new FilePersistanceQueued(serializer, id);
+                break;
+            case PersistenceType.LOCAL_ASYNCHO:
+                persistence = new FilePersistanceQueued(serializer, id);
+                break;
+            case PersistenceType.SERVER_ASYNCHRO:
+                persistence = new FilePersistanceServer(serializer, id);
+                break;
+        }
+    }
+
     public static EventTracker GetInstance() {
         return Instance;
     }
@@ -42,7 +88,7 @@ public class EventTracker : MonoBehaviour
         if (debug)
             Debug.Log("Telemetry: Event Tracker flushing");
 
-        // Do some flushing here boys
+        persistence.Flush();
     }
 
     public void TrackEvent(Event ev) {
@@ -52,7 +98,7 @@ public class EventTracker : MonoBehaviour
         if (debug)
             Debug.Log("Telemetry: tracking event " + ev.GetType() + ".");
 
-        events.Add(ev);
+        persistence.Send(ev);
 
         if (ev.GetFlush())
             Flush();
