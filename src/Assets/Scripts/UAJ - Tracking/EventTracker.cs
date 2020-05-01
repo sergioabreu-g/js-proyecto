@@ -19,6 +19,8 @@ public class EventTracker : MonoBehaviour
     [SerializeField] private PersistenceType pType = PersistenceType.LOCAL_SYNCHRO;
     [SerializeField] private SerializeType sType = SerializeType.CSV;
 
+    [SerializeField] private bool[] eTypesIgnored = new bool[((int)EventType.ENTERBOAT+1)];
+
 
     private IPersistance persistence;
     private ISerializer serializer;
@@ -95,13 +97,15 @@ public class EventTracker : MonoBehaviour
         if (!trackingActive)
             return;
 
-        if (debug)
-            Debug.Log("Telemetry: tracking event " + ev.GetType() + ".");
-
-        persistence.Send(ev);
-
-        if (ev.GetFlush())
-            Flush();
+        // Ignora el evento si así lo hemos asignado
+        if (!eTypesIgnored[(int)ev.GetEventType()])
+        {
+            if (debug)
+                Debug.Log("Telemetry: tracking event " + ev.GetType() + ".");
+            persistence.Send(ev);
+            if (ev.GetFlush())
+                Flush();
+        }
     }
 
     public void RegisterStartEvent() {
