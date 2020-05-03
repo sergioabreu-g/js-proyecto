@@ -1519,6 +1519,7 @@ MonoBehaviour:
   sceneName: Final
   onCancel: 0
   resetProgress: 0
+  startGame: 0
 --- !u!114 &1351484660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2399,6 +2400,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3620953300003208346, guid: 692ff25d5e2a18a4d8b23b319a82e12e,
+        type: 3}
+      propertyPath: sType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620953300003208346, guid: 692ff25d5e2a18a4d8b23b319a82e12e,
+        type: 3}
+      propertyPath: pType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 692ff25d5e2a18a4d8b23b319a82e12e, type: 3}
 --- !u!1 &3041036976042814054
@@ -2495,6 +2506,7 @@ MonoBehaviour:
   sceneName: Album
   onCancel: 0
   resetProgress: 0
+  startGame: 0
 --- !u!224 &3041036976563012105
 RectTransform:
   m_ObjectHideFlags: 0

@@ -45,3 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackingActive: 1
   debug: 1
+  timedFlush: 1
+  flushTimer: 15
+  pType: 1
+  sType: 1
+  forzeOneLine: 1
+  eTypesIgnored: 000000000000
