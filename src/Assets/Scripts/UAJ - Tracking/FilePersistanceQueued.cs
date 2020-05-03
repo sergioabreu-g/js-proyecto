@@ -4,16 +4,20 @@ using System.IO;
 using System;
 using UnityEngine; //debugs
 
-// Guardado de eventos en archivo fisico
-// guarda los eventos en una cola y los vuelca al sistema de archivos en flush
+/*
+ * Guardado de eventos en archivo fisico
+ * "Send" encola los eventos y "flush" los vuelca al sistema fisico
+ */
 public class FilePersistanceQueued : IPersistance
 {
     //cola donde guardar los archivos
     Queue<String> eventQueue = new Queue<String>();
 
+    //Referencia al serializador a utilizar
     ISerializer serializer = null;
-    string sesionID = null;
-    string filePath = null;
+    //Strings fijos de la sesion
+    string sesionID = null, filePath = null;
+
     public FilePersistanceQueued(ISerializer s, string id) {
         serializer = s;
         sesionID = id;
@@ -38,10 +42,12 @@ public class FilePersistanceQueued : IPersistance
 
     //////////////////////////////////////////////////////////////////////////
 
+    //encola evento
     public void Send(Event tEvent) {
         eventQueue.Enqueue(serializer.Serialize(tEvent));
     }
 
+    //desencola y escribe todos los eventos
     public void Flush() {
         try {
             using (StreamWriter writer = File.AppendText(filePath)) {

@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
+/*
+ * Serializador CSV
+ */
 public class myCSVSerializer : ISerializer
 {
     public string Serialize(Event tEvent) {

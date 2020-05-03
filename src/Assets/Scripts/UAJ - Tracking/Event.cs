@@ -1,34 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine; //access unity time
 
 using Newtonsoft.Json; //Libreria para JSON .Net
 using System;
 using System.Text;
 using System.IO; //writing custom jsons
 
-public enum EventType { START, END, PHOTO, DEATH, UPGRADE, ENTERBOAT}
+//tipos de eventos utilizados en el juego
+public enum EventType { START, END, PHOTO, DEATH, UPGRADE, ENTERBOAT }
 
+/*
+ * Clase abstracta comun a todos los eventos, implementa logica comun (escritura comun de json, csv, etc)
+ */
 public abstract class Event
 {
+    static protected bool oneLineJSON = true;
+    static public void SetOneLineJSON(bool oneLine) { oneLineJSON = oneLine; }
+
     protected EventType type;
     protected int timeStamp;
-    protected bool flush = false;
 
+    //used by tracker to check if the type should be ignored
     public EventType GetEventType() {
         return type;
     }
 
-    public void SetFlush(bool flush) {
-        this.flush = flush;
-    }
-
-    public bool GetFlush() {
-        return flush;
-    }
+    //used by specific events to force flush
+    protected bool flush = false;
+    public void SetFlush(bool flush) { this.flush = flush; }
+    public bool GetFlush() { return flush; }
 
     //override by each event type
     protected abstract void writeJSON(JsonWriter writer);
+    //write the common sections of all events
     public string ToJSON() {
         StringBuilder sb = new StringBuilder();
         StringWriter sw = new StringWriter(sb);
@@ -36,6 +41,7 @@ public abstract class Event
         using (JsonWriter writer = new JsonTextWriter(sw)) {
             writer.Formatting = Formatting.Indented;
 
+            //write type and timestamp
             writer.WriteStartObject();
             writer.WritePropertyName("EventType");
             writer.WriteValue(type.ToString()); //to string more readable
@@ -46,14 +52,20 @@ public abstract class Event
             writer.WriteEndObject();
         }
 
-        return sb.ToString();
+        //write to string the whole json + optional one line
+        String s = sb.ToString();
+        if (oneLineJSON) s = s.Replace("\n", " ").Replace("\r", " ");
+        return s;
     }
 
+    //override by each event type
     protected abstract void writeCSV(StringWriter writer);
+    //write the common csv sections of all events
     public string ToCSV() {
         StringBuilder sb = new StringBuilder();
         StringWriter sw = new StringWriter(sb);
 
+        //write type and timestamp
         sw.Write(type.ToString());
         sw.Write(",");
         sw.Write(timeStamp);
@@ -65,7 +77,7 @@ public abstract class Event
     }
 }
 
-public class StartEvent: Event//, ISerializable
+public class StartEvent: Event
 {
     string id;
     DateTime date;
@@ -90,12 +102,8 @@ public class StartEvent: Event//, ISerializable
     }
 }
 
-// Aquí faltarían basura que tiene encima, mejoras desbloqueadas y
-// peces fotografiados
-
-// ¿Los peces fotografiados los guardamos solo como un int nPeces?
-// ¿No queríamos saber qué peces hay fotografiados y cuales no para ver los dificiles?
-// ¿O se "reconstruye" en base a eventos de fotografia?
+// Falta basura que tiene encima, mejoras desbloqueadas y peces fotografiados
+//      * Los computariamos posteriormente como se indica en el documento
 public class EndEvent : Event
 {
     string id;

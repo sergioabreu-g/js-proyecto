@@ -4,13 +4,18 @@ using System.IO;
 using System;
 using UnityEngine; //debugs
 
-// Guardado de eventos en archivo fisico
-// send guarda el evento directamente
+/*
+ * Guardado de eventos en archivo fisico
+ * "Send" directamente escribe en el sistema fisico y "flush" en este caso no hace nada
+ * No es muy recomendable, pero empezamos por aqui
+ */
 public class FilePersistance : IPersistance
 {
+    //Referencia al serializador a utilizar
     ISerializer serializer = null;
-    string sesionID = null;
-    string filePath = null;
+    //Strings fijos de la sesion
+    string sesionID = null, filePath = null;
+
     public FilePersistance(ISerializer s, string id) {
         serializer = s;
         sesionID = id;
@@ -35,6 +40,7 @@ public class FilePersistance : IPersistance
 
     //////////////////////////////////////////////////////////////////////////
 
+    //directamente escribe el evento
     public void Send(Event tEvent) {
         try {
             using (StreamWriter writer = File.AppendText(filePath)) {
@@ -46,6 +52,7 @@ public class FilePersistance : IPersistance
         }
     }
 
+    //no hace nada en este serializer
     public void Flush() {
 
     }
